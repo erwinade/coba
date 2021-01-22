@@ -3,6 +3,7 @@ include './conn.php';
 ?>
 <!DOCTYPE html>
 <?php include 'head.php'; ?>
+<link rel="stylesheet" type="text/css" href="assets/node_modules/daterangepicker/daterangepicker.css" />
 <body class="fix-header fix-sidebar card-no-border">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -109,12 +110,12 @@ if (isset($_SESSION['ok'])) { ?>
 		<div class="col-lg-4">
 			<div class="raw">
 				<div class="card card-info">
-                    <div class="card-header bg-info" >
-                        <b class="text-white"><i class="fas fa-signal"></i> Temperature</strong> </b>
-                    </div></br>
+                    <div class="card-header bg-info mb-3" >
+                        <b class="text-white"><i class="fas fa-history"></i> Last Update</strong> </b>
+                    </div>
 					<div class="row">
 					<div class="col-sm-6">
-						<div id="card" class="card card-info m-1 card-border border-primary">
+						<div id="card" class="card card-info m-1 border-primary" style="border: 1px solid;border-radius: 3px;">
 							<div class="card-header" style="background-color:#d9edf7;#bce8f1;color:#31708f; border:-1px!important; ">
 								<div class="row">
 									<div class="col-1">
@@ -127,13 +128,13 @@ if (isset($_SESSION['ok'])) { ?>
                             </div>
 							<div class="card-body">
                             	<span class="pull-left" id="updateTemp">Update: 00:01:01</span></br>
-								<span class="pull-left"><strong>Temperature(&deg;C)</strong></span>
+                                <span style="font-size:15px;font-weight:500">Temperature(&deg;C)</span>
 								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-6">
-                    <div id="card" class="card card-info m-1 card-border border-primary">
+                    <div id="card" class="card card-info m-1 card-border border-primary" style="border: 1px solid;border-radius: 3px;">
 							<div class="card-header" style="background-color:#d9edf7;#bce8f1;color:#31708f; border:-1px!important; ">
 								<div class="row">
 									<div class="col-1">
@@ -146,7 +147,7 @@ if (isset($_SESSION['ok'])) { ?>
                             </div>
 							<div class="card-body">
                             	<span class="pull-left" id="updateTemp">Update: 00:01:01</span></br>
-								<span class="pull-left"><strong>Humidity(&deg;C)</strong></span>
+                                <span style="font-size:15px;font-weight:500">Humidity(%)</span>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -155,41 +156,41 @@ if (isset($_SESSION['ok'])) { ?>
 				</div>
 			</div>
 			<div class="raw">
-				<div class="panel panel-danger">
-					<div class="panel-heading" >
-						 <strong><i class="glyphicon glyphicon-wrench"></i> Controls</strong>
-					</div></br>
+				<div class="card">
+                <div class="card-header bg-danger mb-3" >
+                        <b class="text-white"><i class="fas fa-wrench"></i> Last Update</strong> </b>
+                    </div>
 					<div class="row" style="padding-left:5px;">
 						<div class="col-lg-6">
 							<div class="form-group" style="padding-right:5px;">
 								<div class='input-group date' id='datetimepicker1'>
-									<input type='text' id='tgl' class="form-control" data-date-format="YYYY-MM-DD"/>
+									<input type='text' id='tgl' name="dates" class="form-control" data-date-format="YYYY-MM-DD"/>
 									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar"></span>
+										<span class="fas fa-calender"></span>
 									</span>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
-							<button id="excel" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>  Export to EXCEL</button>
+							<button id="excel" type="button" class="btn btn-sm btn-primary"><span class="fas fa-save"></span>  Export to EXCEL</button>
 						</div>
 					</div>
 					<hr>
-					<div class="raw" style="padding-left:40px;">
-						<button type="button" class="btn btn-success" id="L1N"><span class="glyphicon glyphicon-lamp"></span> Lampu 1 ON</button>
-						<button type="button" class="btn btn-danger" id="L1F"><span class="glyphicon glyphicon-lamp"></span> Lampu 1 OFF</button>
+					<div class="col-12 text-center">
+						<button type="button" class="btn btn-sm btn-success" id="L1N"><span class="fas fa-certificate"></span> Lampu 1 ON</button>
+						<button type="button" class="btn btn-sm btn-danger" id="L1F"><span class="fas fa-certificate"></span> Lampu 1 OFF</button>
 					</div>
 					<br>
-					<div class="raw" style="padding-left:40px;">
-						<button type="button" class="btn btn-success" id="L2N"><span class="glyphicon glyphicon-lamp"></span> Lampu 2 ON</button>
-						<button type="button" class="btn btn-danger" id="L2F"><span class="glyphicon glyphicon-lamp"></span> Lampu 2 OFF</button>
+					<div class="col-12 text-center">
+						<button type="button" class="btn btn-sm btn-success" id="L2N"><span class="fas fa-certificate"></span> Lampu 2 ON</button>
+						<button type="button" class="btn btn-sm btn-danger" id="L2F"><span class="fas fa-certificate"></span> Lampu 2 OFF</button>
 					</div>
 					<br>
 				</div>
 			</div>
-			<div class="raw">
-				<div class="col-lg-12">
-					<strong>Mini Home Automation - RPi2 - Whatsapp</strong>
+			<div class="row">
+				<div class="col-lg-12 text-center">
+                <span style="font-size:15px;font-weight:500">Mini Home Automation - RPi2 - Whatsapp</span>
 				</div>
 			</div>
 		</div>
@@ -253,17 +254,32 @@ if (isset($_SESSION['ok'])) { ?>
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="assets/node_modules/daterangepicker/moment.min.js"></script>
+    <script src="assets/node_modules/daterangepicker/daterangepicker.js"></script>
 
+
+<?php
+//data sementara sebelum ada data dari database
+
+// data dari database nnti berupa log sensor berdasarkan tanggal input sensor
+
+
+    $tempLabel = ["1 Jan", "2 Jan","3 Jan","4 Jan", "5 Jan","6 Jan","7 Jan", "8 Jan","9 Jan","10 Jan", "11 Jan","12 Jan","13 Jan", "14 Jan","15 Jan"];
+    $tempData = [60, 70,90, 89,88,87,86,85,84,83,82,81,80,79,78];
+
+    $humLabel = ["1 Jan", "2 Jan","3 Jan","4 Jan", "5 Jan","6 Jan","7 Jan", "8 Jan","9 Jan","10 Jan", "11 Jan","12 Jan","13 Jan", "14 Jan","15 Jan"];
+    $humData = [30, 33, 35,36,37,38,39,40,41,42,44,46,67,68,45];
+?>
 
 <script>
 var ctx = document.getElementById('tempChart');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: [<?php foreach ($tempLabel as $label) { echo '"' . $label . '",';}?>],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Sensor 1',
+            data: [<?php foreach ($tempData as $data) { echo $data . ',';}?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -296,27 +312,17 @@ var myChart = new Chart(ctx, {
 
 var hum = document.getElementById('humChart');
 var humChart = new Chart(hum, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: [<?php foreach ($humLabel as $label) { echo '"' . $label . '",';}?>],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: "sensor hum 1",
+            data: [<?php foreach ($humData as $data) { echo '"' . $data . '",';}?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
         }]
@@ -331,6 +337,8 @@ var humChart = new Chart(hum, {
         }
     }
 });
+
+$('input[name="dates"]').daterangepicker();
 </script>
 </body>
 
