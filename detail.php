@@ -121,7 +121,7 @@ if (isset($_SESSION['ok'])) { ?>
 										<i class="fa fa-tasks fa-1x"></i>
 									</div>
                                     <div class="col-11 text-right">
-										<span style="font-size:40px;font-weight:40">26</span>
+										<span style="font-size:40px;font-weight:500">26</span>
 									</div>
 								</div>
                             </div>
@@ -133,22 +133,22 @@ if (isset($_SESSION['ok'])) { ?>
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<div id="panel2" class="panel panel-info">
-							<div class="panel-heading">
+                    <div id="card" class="card card-info m-1 card-border border-primary">
+							<div class="card-header" style="background-color:#d9edf7;#bce8f1;color:#31708f; border:-1px!important; ">
 								<div class="row">
-									<div class="col-xs-1">
+									<div class="col-1">
 										<i class="fa fa-tasks fa-1x"></i>
 									</div>
-									<div class="col-xs-12 text-right">
-										<div id="Humvalue" class="huge">12</div>
+                                    <div class="col-11 text-right">
+										<span style="font-size:40px;font-weight:500">26</span>
 									</div>
 								</div>
+                            </div>
+							<div class="card-body">
+                            	<span class="pull-left" id="updateTemp">Update: 00:01:01</span></br>
+								<span class="pull-left"><strong>Humidity(&deg;C)</strong></span>
+								<div class="clearfix"></div>
 							</div>
-							   <div class="panel-footer">
-									<span class="pull-left" id="updateHum">Update: 00:01:01</span></br>
-									<span class="pull-left"><strong>Humidity(%RH)</strong></span>
-									<div class="clearfix"></div>
-							   </div>
 						</div>
 					</div>
 					</div>
