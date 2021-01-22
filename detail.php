@@ -178,12 +178,12 @@ if (isset($_SESSION['ok'])) { ?>
 					<hr>
 					<div class="col-12 text-center">
 						<button type="button" class="btn btn-sm btn-success" id="L1N"><span class="fas fa-certificate"></span> Lampu 1 ON</button>
-						<button type="button" class="btn btn-sm btn-danger" id="L1F"><span class="fas fa-certificate"></span> Lampu 1 OFF</button>
+						<button type="button" class="btn btn-sm btn-danger" id="L1F"><span class="fas fa-certificate" style="color:#e3abab;"></span> Lampu 1 OFF</button>
 					</div>
 					<br>
 					<div class="col-12 text-center">
 						<button type="button" class="btn btn-sm btn-success" id="L2N"><span class="fas fa-certificate"></span> Lampu 2 ON</button>
-						<button type="button" class="btn btn-sm btn-danger" id="L2F"><span class="fas fa-certificate"></span> Lampu 2 OFF</button>
+						<button type="button" class="btn btn-sm btn-danger" id="L2F"><span class="fas fa-certificate" style="color:#e3abab;"></span> Lampu 2 OFF</button>
 					</div>
 					<br>
 				</div>
