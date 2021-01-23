@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'head.php' ?>
+<?php 
+    include 'head.php';
+    include 'conn.php' ;
+?>
 
 <body class="fix-header fix-sidebar card-no-border">
     <!-- ============================================================== -->
@@ -10,7 +13,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Admin Wrap</p>
+            <p class="loader__label">Loading</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -47,9 +50,7 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item mt-2">
-                            <h1>NDC Data Center Information</h1>
-                        </li>
+                        
                     </ul>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
@@ -59,29 +60,7 @@
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="" /> <span class="hidden-md-down">Gatot Nugroho &nbsp;<i class="fa fa-angle-down"></i></span> </a>
-                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
-                                <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
-                                            <div class="u-text">
-                                                <h4>Gatot Nugroho</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                        </div>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                                    <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                        <?php include 'infodevice.php'?>
                     </ul>
                 </div>
             </nav>
@@ -114,114 +93,197 @@
                 </div>
 
                 <div class="row">
-                <div class="col-lg-12">
-                    <div class="">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#myModal">Tambah</button>
-                                                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Nama</th>
-                                                                <th>Tipe</th>
-                                                                <th>Keterangan</th>
-                                                                <th>Jumlah Sensor</th>
-                                                                <th>Lantai</th>
-                                                                <th>&nbsp;</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Wavecom 234</td>
-                                                                <td>UPS</td>
-                                                                <td></td>
-                                                                <td>0</td>
-                                                                <td>NDC Jakarta Lobby</td>
-                                                                <td align="center">
-                                                                    <button class="btn btn-warning edit" data-id="" data-token="">Edit</button>
-                                                                    <button class="btn btn-danger delete" data-id="" data-token="">Hapus</button>
-                                                                    <a href="" class="btn btn-primary">Detail</a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                    <div class="col-lg-12">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                            <div class="card-header bg-info text-white">Device</div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <form method="post" action="aksi.php">
+                                                            <div class="form-group">
+                                                                <div>Device Name</div>
+                                                                <input type="text" class="form-control" id="Username" required="required" name="device" placeholder="Device Name"/>
+                                                            </div>
+                                                            <button type="submit" name="dvc" class="btn btn-info">Submit</button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <!--end card-body-->
                                         </div>
-                                        <!--end card-body-->
+                                        <!--end card-->
                                     </div>
-                                    <!--end card-->
                                 </div>
                             </div>
+                            <!--end card-body-->
                         </div>
-                        <!--end card-body-->
+                        <!--end card-->
                     </div>
-                    <!--end card-->
+                    <!--end col-->
                 </div>
-                <!--end col-->
-            </div>
-<!-- ip read -->
-<?php
-    $ip1=192;
-    $ip2=168;
-    $ip3=0;
-    $ip4=99;
-
-    $gt1=192;
-    $gt2=168;
-    $gt3=0;
-    $gt4=1;
-
-    $sub1=255;
-    $sub2=255;
-    $sub3=255;
-    $sub4=0;
-?>
-<!-- end ip read -->
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card">
+                        <div class="">
                             <div class="card-body">
-                                    <form action="/action_page.php">
-                                    <label for="fname">Static IP &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                                    <input type="text" id="a" name="a" size="3" value=<?php echo $ip1;?>>:<input type="text" id="b" name="b" size="3" value=<?php echo $ip2;?>>:<input type="text" id="c" name="c" size="3" value=<?php echo $ip3;?>>:<input type="text" id="d" name="d" size="3" value=<?php echo $ip4;?>><br>
-                                    
-                                    <label for="fname">Gateway &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                                    <input type="text" id="a" name="a" size="3" value=<?php echo $gt1;?>>:<input type="text" id="b" name="b" size="3" value=<?php echo $gt2;?>>:<input type="text" id="c" name="c" size="3" value=<?php echo $gt3;?>>:<input type="text" id="d" name="d" size="3" value=<?php echo $gt4;?>><br>
-
-                                    <label for="fname">Subnetmask &nbsp;&nbsp;:</label>
-                                    <input type="text" id="a" name="a" size="3" value=<?php echo $sub1;?>>:<input type="text" id="b" name="b" size="3" value=<?php echo $sub2;?>>:<input type="text" id="c" name="c" size="3" value=<?php echo $sub3;?>>:<input type="text" id="d" name="d" size="3" value=<?php echo $sub4;?>><br>
-
-                                    <label for="fname">DNS IP &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                                    <input type="text" id="a" name="a" size="3" value=<?php echo $ip1;?>>:<input type="text" id="b" name="b" size="3" value=<?php echo $ip2;?>>:<input type="text" id="c" name="c" size="3" value=<?php echo $ip3;?>>:<input type="text" id="d" name="d" size="3" value=<?php echo $ip4;?>><br>
-                                    
-                                    </form>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                            <div class="card-header bg-info text-white">Password</div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <form method="post" action="aksi.php">
+                                                            <div class="form-group">
+                                                                <div>Username</div>
+                                                                <input type="text" class="form-control" id="Username" required="required" name="username" placeholder="Username"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="password">Password</label>
+                                                                <input type="password" class="form-control" id="Password" required="required" name="pass" placeholder="Password"/>
+                                                            </div>
+                                                            <button type="submit" name="pswd" class="btn btn-info">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end card-body-->
+                                        </div>
+                                        <!--end card-->
+                                    </div>
+                                </div>
                             </div>
                             <!--end card-body-->
                         </div>
                         <!--end card-->
                     </div>
+                    <!--end col-->
                 </div>
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card">
+                        <div class="">
                             <div class="card-body">
-                                <button class="btn btn-primary mb-4" a href="aksi.php">Reboot</button>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                            <div class="card-header bg-info text-white">Email</div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+
+                                                    <?php 
+                                                        $sql	= 'select * from email';
+                                                        $query5	= mysqli_query($conn,$sql);
+                                                        while($internal = mysqli_fetch_array($query5))
+                                                        {
+                                                            $id = $internal['id'];
+                                                            $description = $internal['name'];
+                                                            $email = $internal['email'];
+                                                            $smtp = $internal['smtp'];
+                                                    ?>
+                                                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                                <tr>
+                                                                    <th>Nama</th>
+                                                                    <td><?php echo $description; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Email</th>
+                                                                    <td><?php echo $email; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>SMPT</th>
+                                                                    <td><?php echo $smtp; ?></td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end card-body-->
+                                        </div>
+                                        <!--end card-->
+                                    </div>
+                                </div>
                             </div>
                             <!--end card-body-->
                         </div>
                         <!--end card-->
                     </div>
+                    <!--end col-->
                 </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                            <div class="card-header bg-info text-white">Telegram</div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+
+                                                    <?php 
+                                                        $sql	= 'select * from telegram';
+                                                        $query5	= mysqli_query($conn,$sql);
+                                                        while($internal = mysqli_fetch_array($query5))
+                                                        {
+                                                            $id = $internal['id'];
+                                                            $description = $internal['name'];
+                                                            $bot = $internal['bot_id'];
+                                                    ?>
+                                                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                                <tr>
+                                                                    <th>Nama</th>
+                                                                    <td><?php echo $description; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Bot_Id</th>
+                                                                    <td><?php echo $bot; ?></td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end card-body-->
+                                        </div>
+                                        <!--end card-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end card-body-->
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                </div>
+
+               
+
+                <div class="row">
+                    <div class="col-lg-12">
+                            <div class="card-body">
+                                <button class="btn btn-primary mb-4" a href="aksi.php">Submit</button>
+                            </div>
+                            <!--end card-body-->
+                        <!--end card-->
+                    </div>
+                </div>
+
                 
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->

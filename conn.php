@@ -1,8 +1,8 @@
 <?php
 $servername 	= "127.0.0.1";
-$username 	    = "root";
-$password 	    = "";
-$db		        = "soendev";
+$username 	    = "gatot";
+$password 	    = "123";
+$db		        = "raspi";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
