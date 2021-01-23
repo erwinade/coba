@@ -98,12 +98,12 @@ if (isset($_SESSION['ok'])) { ?>
 			</div>
 			</div>
 			<div class="raw">
-			<div class="card card-info">
-            <div class="card-header bg-info" >
-				 <h4 class="text-white"><i class="fas fa-signal"></i> Humidity</strong> </h4>
-				</div></br>
+                <div class="card card-info">
+                    <div class="card-header bg-info" >
+                        <h4 class="text-white"><i class="fas fa-signal"></i> Humidity</strong> </h4>
+                    </div></br>
 				<canvas id="humChart" width="400" height="200"></canvas>
-			</div>
+                </div>
 			</div>
 		</div>
 		<div class="col-lg-4">
@@ -255,7 +255,17 @@ if (isset($_SESSION['ok'])) { ?>
     <script src="assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
 
 
-<script>
+    <script>
+        window.onload = function () {
+
+        var chart1 = new CanvasJS.Chart("tempchart", {
+            animationEnabled: true,  
+            title:{
+                text: ""
+            },
+            axisY: {
+                title: "Units Sold",
+                valueFormatString: "#0,,.",
 var ctx = document.getElementById('tempChart');
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -281,57 +291,82 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
+                stripLines: [{
+                    value: 3366500,
+                    label: "Average"
+                }]
+            },
+            data: [{
+                yValueFormatString: "#,### Units",
+                xValueFormatString: "YYYY",
+                type: "spline",
+                dataPoints: [
+                    {x: new Date(2002, 0), y: 2506000},
+                    {x: new Date(2003, 0), y: 2798000},
+                    {x: new Date(2004, 0), y: 3386000},
+                    {x: new Date(2005, 0), y: 6944000},
+                    {x: new Date(2006, 0), y: 6026000},
+                    {x: new Date(2007, 0), y: 2394000},
+                    {x: new Date(2008, 0), y: 1872000},
+                    {x: new Date(2009, 0), y: 2140000},
+                    {x: new Date(2010, 0), y: 7289000},
+                    {x: new Date(2011, 0), y: 4830000},
+                    {x: new Date(2012, 0), y: 2009000},
+                    {x: new Date(2013, 0), y: 2840000},
+                    {x: new Date(2014, 0), y: 2396000},
+                    {x: new Date(2015, 0), y: 1613000},
+                    {x: new Date(2016, 0), y: 2821000},
+                    {x: new Date(2017, 0), y: 2000000}
+                ]
             }]
-        }
+        });
+        chart1.render();
     }
-});
+    </script>
+        <script>
+        window.onload = function () {
 
-var hum = document.getElementById('humChart');
-var humChart = new Chart(hum, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
+        var chart = new CanvasJS.Chart("humchart", {
+            animationEnabled: true,  
+            title:{
+                text: ""
+            },
+            axisY: {
+                title: "Units Sold",
+                valueFormatString: "#0,,.",
+                suffix: "mn",
+                stripLines: [{
+                    value: 3366500,
+                    label: "Average"
+                }]
+            },
+            data: [{
+                yValueFormatString: "#,### Units",
+                xValueFormatString: "YYYY",
+                type: "spline",
+                dataPoints: [
+                    {x: new Date(2002, 0), y: 2506000},
+                    {x: new Date(2003, 0), y: 2798000},
+                    {x: new Date(2004, 0), y: 3386000},
+                    {x: new Date(2005, 0), y: 6944000},
+                    {x: new Date(2006, 0), y: 6026000},
+                    {x: new Date(2007, 0), y: 2394000},
+                    {x: new Date(2008, 0), y: 1872000},
+                    {x: new Date(2009, 0), y: 2140000},
+                    {x: new Date(2010, 0), y: 7289000},
+                    {x: new Date(2011, 0), y: 4830000},
+                    {x: new Date(2012, 0), y: 2009000},
+                    {x: new Date(2013, 0), y: 2840000},
+                    {x: new Date(2014, 0), y: 2396000},
+                    {x: new Date(2015, 0), y: 1613000},
+                    {x: new Date(2016, 0), y: 2821000},
+                    {x: new Date(2017, 0), y: 2000000}
+                ]
             }]
-        }
+        });
+        chart.render();
     }
-});
-</script>
+    </script>
 </body>
 
 </html>
