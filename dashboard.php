@@ -180,7 +180,7 @@
                                                 $satuan = "%";
                                         }
                                     ?>
-                                    <tbody class="rack-table">
+                                    <tbody class="rack-table2">
                                         <tr>
                                             <td><?php echo $comm; ?></td>
                                             <td><?php echo $description; ?></td>
@@ -229,7 +229,7 @@
                                             $type = $row['sens_type'];
                                             $status = $row['status_sensor'];
                                     ?>
-                                    <tbody class="rack-table">
+                                    <tbody class="rack-table3">
                                         <tr>
                                             <td><?php echo $id; ?></td>
                                             <td><?php echo $description; ?></td>
@@ -277,7 +277,7 @@
                                             $sens_value = $row['sens_value'];
                                             $status = $row['status_sensor'];
                                     ?>
-                                    <tbody class="rack-table">
+                                    <tbody class="rack-table4">
                                         <tr>
                                             <td><?php echo $id; ?></td>
                                             <td><?php echo $description; ?></td>
@@ -331,7 +331,7 @@
                                             <option value="hum">hum</option>  
                                             <option value="input">input</option>  
                                             <option value="relay">relay</option>  
-                                            <option value="relay">internal</option> 
+                                            <option value="internal">internal</option> 
                                         </select>  
                                         <br /> 
                                         <label>Threshold Min</label>  
@@ -413,7 +413,7 @@
     <!-- ============================================================== -->
     <script src="../assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-rnYU0fwyR3qe_qTj5_fGYOQp8IVuldk&callback=initMap"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>  
         $(document).ready(function(){  
             $('#add').click(function(){  
@@ -467,10 +467,41 @@
                             beforeSend:function(){  
                                 $('#insert').val("Inserting");  
                             },  
-                            success:function(data){  
-                                $('#insert_form')[0].reset();  
-                                $('#add_data_Modal').modal('hide');  
-                                $('#employee_table').html(data);  
+                            dataType:"json", 
+                            success:function(result){ 
+                                $('#add_data_Modal').modal('hide'); 
+
+                                if(result == 'success')
+                                {
+                                    setInterval(function(){ }, 500);
+                                    swal({
+                                        title: "Success",
+                                        text: "Berhasil Mengupdate Sensor",
+                                        icon: "success",
+                                    })
+                                    .then((value) => {
+                                        location.reload();
+                                    });
+                                }
+
+                                if(result == 'gagal')
+                                {
+                                    setInterval(function(){  }, 500);
+                                    swal({
+                                        title: "Gagal",
+                                        text: "Gagal Mengupdate Sensor",
+                                        icon: "danger",
+                                    })
+                                    .then((value) => {
+                                        location.reload();
+                                    });
+                                }
+
+                                 
+                                // location.reload(); 
+                                // $('#insert_form')[0].reset();
+                                // $('#add_data_Modal').modal('hide');  
+                                // $(result.tag_id).html(result.data);  
                             }  
                         });  
                 }  
