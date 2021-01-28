@@ -112,14 +112,14 @@
                                         </tr>
                                     </thead>
                                     <?php 
-                                        $sql	= 'select * from alarm';
+                                        $sql	= 'select * from alarm_logs';
                                         $query	= mysqli_query($conn,$sql);
                                         while($data = mysqli_fetch_array($query))
                                         {
                                             $id = $data['id'];
                                             $description = $data['sens_name'];
                                             $type = $data['sens_type'];
-                                            $sens_value = $data['value'];
+                                            $sens_value = $data['sens_value'];
                                             $status = $data['status_sensor'];
                                     ?>
                                     <tbody class="rack-table">
@@ -141,20 +141,6 @@
                 </div>
 <!-- tabel Sensor -->
             </div>
-
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <button class="btn btn-primary mb-4" a href="aksi.php">Reboot</button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                </div>
-                
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
