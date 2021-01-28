@@ -490,7 +490,7 @@
                                     swal({
                                         title: "Gagal",
                                         text: "Gagal Mengupdate Sensor",
-                                        icon: "danger",
+                                        icon: "error",
                                     })
                                     .then((value) => {
                                         location.reload();
