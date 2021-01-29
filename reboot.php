@@ -159,7 +159,7 @@
                     $txt = "Minnie Mouse\n";*/
                     fwrite($myfile, $txt);
                     fclose($myfile);
-                    echo $txt;
+                    //echo $txt;
                 ?>
 
                 <div class="row">
