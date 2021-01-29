@@ -138,6 +138,30 @@
                     </div>
                 </div>
 
+                <?php
+                    $myfile = fopen("interfaces", "w") or die("Unable to open file!");
+                    $txt =  "source-directory /etc/network/interfaces.d\n\n".
+                            "auto lo\n".
+                            "iface lo inet loopback\n\n".
+                            "auto eth0\n".
+                            "allow-hotplug eth0\n".
+                            "iface eth0 inet static\n".
+                            "address ".$ip1.".".$ip2.".".$ip3.".".$ip4."\n".
+                            "netmask ".$sub1.".".$sub2.".".$sub3.".".$sub4."\n".
+                            "gateway ".$gt1.".".$gt2.".".$gt3.".".$gt4."\n\n".
+                            "auto eth0:1\n".
+                            "allow-hotplug eth0:1\n".
+                            "iface eth0:1 inet static\n".
+                            "address 190.108.1.200\n".
+                            "netmask 255.255.255.0\n\n".
+                            "dns-nameservers ".$ip1.".".$ip2.".".$ip3.".".$ip4."\n";
+                    /*fwrite($myfile, $txt);
+                    $txt = "Minnie Mouse\n";*/
+                    fwrite($myfile, $txt);
+                    fclose($myfile);
+                    echo $txt;
+                ?>
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
