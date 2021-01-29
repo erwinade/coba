@@ -119,10 +119,39 @@
                                         {
                                             $no++;
                                             $id = $no;
+                                            $id_sens = $row['id'];
                                             $description = $row['sens_name'];
                                             $type = $row['sens_type'];
                                             $sens_value = $row['sens_value'];
                                             $status = $row['status_sensor'];
+                                            $threshold_min = $row['threshold_min'];
+                                            $threshold_max = $row['threshold_max'];
+                                            if($sens_value <= $threshold_max && $sens_value >= $threshold_min)
+                                            {
+                                                $status_sensor="Normal";
+                                            }
+
+                                            if($sens_value >= $threshold_max || $sens_value <= $threshold_min)
+                                            {
+                                                $status_sensor="Alarm";
+                                                //echo "<br>";
+                                                //echo $status_sensor;
+                                                $sql = "INSERT INTO alarm_logs (id_sens, sens_name, sens_value, sens_type, status_sensor)
+                                                VALUES ('$id_sens', '$sens_name', '$sens_value', '$sens_type', '$status_sensor')";
+
+                                                if ($conn->query($sql) === TRUE) {
+                                                    //echo "Berhasil Menambah Alarm Log\n";
+                                                } else {
+                                                    echo "Error: " . $sql . "<br>" . $conn->error;
+                                                }
+                                            }
+                                            $sql = "UPDATE sensor SET status_sensor='$status_sensor' WHERE id=$id_sens";
+
+                                                if ($conn->query($sql) === TRUE) {
+                                                    //echo "Berhasil Mengupdate Sensor </br>";
+                                                } else {
+                                                    echo "Error updating record: " . $conn->error;
+                                                }
                                     ?>
                                     <tbody class="rack-table">
                                         <tr>
