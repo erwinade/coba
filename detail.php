@@ -1,5 +1,57 @@
 <?php
-include './conn.php';
+    include './conn.php';
+    if (isset($_POST['relay1on']))
+    {
+        system(" gpio mode 24 out ") ; 
+        system(" gpio write 24 1") ; 
+        //echo "on";
+    }
+    else if (isset($_POST['relay1off']))
+    {
+        system(" gpio mode 24 out ") ; 
+        system(" gpio write 24 0") ; 
+        //echo "off";
+    }
+    if (isset($_POST['relay2on']))
+    {
+        system(" gpio mode 22 out ") ; 
+        system(" gpio write 22 1") ; 
+        //echo "on";
+    }
+    else if (isset($_POST['relay2off']))
+    {
+        system(" gpio mode 22 out ") ; 
+        system(" gpio write 22 0") ; 
+        //echo "off";
+    }
+    if (isset($_POST['relay3on']))
+    {
+        system(" gpio mode 27 out ") ; 
+        system(" gpio write 27 1") ; 
+        //echo "on";
+    }
+    else if (isset($_POST['relay3off']))
+    {
+        system(" gpio mode 27 out ") ; 
+        system(" gpio write 27 0") ; 
+        //echo "off";
+    }
+    if (isset($_POST['relay4on']))
+    {
+        system(" gpio mode 17 out ") ; 
+        system(" gpio write 17 1") ; 
+        //echo "on";
+    }
+    else if (isset($_POST['relay4off']))
+    {
+        system(" gpio mode 17 out ") ; 
+        system(" gpio write 17 0") ; 
+        //echo "off";
+    }
+    /*echo "relay 1=";system("gpio read 24");
+    echo "relay 2=";system("gpio read 22");
+    echo "relay 3=";system("gpio read 27");
+    echo "relay 4=";system("gpio read 17");*/
 ?>
 <!DOCTYPE html>
 <?php include 'head.php'; ?>
@@ -177,17 +229,34 @@ if (isset($_SESSION['ok'])) { ?>
 					</div>
 					<hr>
 					<div class="col-12 text-center">
-						<button type="button" class="btn btn-sm btn-success" id="L1N"><span class="fas fa-certificate"></span> Lampu 1 ON</button>
-						<button type="button" class="btn btn-sm btn-danger" id="L1F"><span class="fas fa-certificate" style="color:#e3abab;"></span> Lampu 1 OFF</button>
-					</div>
-					<br>
+                        <form method="post">
+                            <button class="btn btn-sm btn-success" name="relay1on">Relay 1 ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay1off">Relay 1 OFF</button>
+                        </form>
+                    </div>
 					<div class="col-12 text-center">
-						<button type="button" class="btn btn-sm btn-success" id="L2N"><span class="fas fa-certificate"></span> Lampu 2 ON</button>
-						<button type="button" class="btn btn-sm btn-danger" id="L2F"><span class="fas fa-certificate" style="color:#e3abab;"></span> Lampu 2 OFF</button>
+                        <form method="post">
+                            <button class="btn btn-sm btn-success" name="relay2on">Relay 2 ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay2off">Relay 2 OFF</button>
+                        </form>
+					</div>
+                    <div class="col-12 text-center">
+                        <form method="post">
+                            <button class="btn btn-sm btn-success" name="relay3on">Relay 3 ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay3off">Relay 3 OFF</button>
+                        </form>
+                    </div>
+					<div class="col-12 text-center">
+                        <form method="post">
+                            <button class="btn btn-sm btn-success" name="relay4on">Relay 4 ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay4off">Relay 4 OFF</button>
+                        </form>
 					</div>
 					<br>
 				</div>
 			</div>
+
+            
 			<div class="row">
 				<div class="col-lg-12 text-center">
                 <span style="font-size:15px;font-weight:500">Mini Home Automation - RPi2 - Whatsapp</span>
