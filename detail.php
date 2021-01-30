@@ -234,18 +234,21 @@ if (isset($_SESSION['ok'])) { ?>
                             <button class="btn btn-sm btn-danger" name="relay1off">Relay 1 OFF</button>
                         </form>
                     </div>
+                    <br>
 					<div class="col-12 text-center">
                         <form method="post">
                             <button class="btn btn-sm btn-success" name="relay2on">Relay 2 ON</button>
                             <button class="btn btn-sm btn-danger" name="relay2off">Relay 2 OFF</button>
                         </form>
 					</div>
+                    <br>
                     <div class="col-12 text-center">
                         <form method="post">
                             <button class="btn btn-sm btn-success" name="relay3on">Relay 3 ON</button>
                             <button class="btn btn-sm btn-danger" name="relay3off">Relay 3 OFF</button>
                         </form>
                     </div>
+                    <br>
 					<div class="col-12 text-center">
                         <form method="post">
                             <button class="btn btn-sm btn-success" name="relay4on">Relay 4 ON</button>
