@@ -53,21 +53,6 @@ File: scss
     position: relative; }
 
 
-    .box1{
-      width:800px;
-      height:600px;
-      background:#eaeaf0;
-      display: inline-block;
-      margin-left: 10px;
-    }
-    .box2{
-      width:400px;
-      height:800px;
-      background:#eaeaf0;
-      display: inline-block;
-      margin-left: 10px;
-    }
-
 /*******************
  Topbar
 *******************/
