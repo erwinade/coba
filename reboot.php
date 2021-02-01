@@ -155,7 +155,8 @@
                             "address 190.108.1.200\n".
                             "netmask 255.255.255.0\n\n".
                             "dns-nameservers ".$ip1.".".$ip2.".".$ip3.".".$ip4."\n";
-                    
+                    /*fwrite($myfile, $txt);
+                    $txt = "Minnie Mouse\n";*/
                     //fwrite($myfile, $txt);
                     //fclose($myfile);
                     //echo $txt;
@@ -165,8 +166,11 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <button class="btn btn-primary mb-4" a href="aksi.php">Reboot</button>
-                            </div>
+                                <form method="post" action="progres.php">
+                                    <input type="submit" on click="jalan()" name="reboot" value="Reboot" />
+                                    <input type="hidden" id="bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 1%" />
+                                </form>
+                                </div>
                             <!--end card-body-->
                         </div>
                         <!--end card-->
