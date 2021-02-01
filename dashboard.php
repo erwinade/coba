@@ -113,15 +113,15 @@
                                     </thead>
                                     <?php 
                                         $no = 0;
-                                        $sql	= 'select * from sensor where sens_type="internal"';
+                                        $sql	= 'select * from sensor where sens_type in("internal/temp","internal/storage","internal/voltage")';
                                         $query1	= mysqli_query($conn,$sql);
                                         while($row = mysqli_fetch_array($query1))
                                         {
                                             $no++;
                                             $id = $no;
                                             $id_sens = $row['id'];
-                                            $description = $row['sens_name'];
-                                            $type = $row['sens_type'];
+                                            $sens_name = $row['sens_name'];
+                                            $sens_type = $row['sens_type'];
                                             $sens_value = $row['sens_value'];
                                             $status = $row['status_sensor'];
                                             $threshold_min = $row['threshold_min'];
@@ -156,8 +156,8 @@
                                     <tbody class="rack-table">
                                         <tr>
                                             <td><?php echo $id; ?></td>
-                                            <td><?php echo $description; ?></td>
-                                            <td><?php echo $type; ?></td>
+                                            <td><?php echo $sens_name; ?></td>
+                                            <td><?php echo $sens_type; ?></td>
                                             <td><?php echo $sens_value; ?></td>
                                             <td><?php echo $status; ?></td>
                                             <td style="text-align:center"><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" />&nbsp;&nbsp;<input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" />
@@ -360,7 +360,9 @@
                                             <option value="hum">hum</option>  
                                             <option value="input">input</option>  
                                             <option value="relay">relay</option>  
-                                            <option value="internal">internal</option> 
+                                            <option value="internal">internal/temp</option> 
+                                            <option value="internal">internal/storage</option> 
+                                            <option value="internal">internal/voltage</option> 
                                         </select>  
                                         <br /> 
                                         <label>Threshold Min</label>  
