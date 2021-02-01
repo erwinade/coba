@@ -1,57 +1,6 @@
 <?php
     include './conn.php';
-    if (isset($_POST['relay1on']))
-    {
-        system(" gpio mode 24 out ") ; 
-        system(" gpio write 24 1") ; 
-        //echo "on";
-    }
-    else if (isset($_POST['relay1off']))
-    {
-        system(" gpio mode 24 out ") ; 
-        system(" gpio write 24 0") ; 
-        //echo "off";
-    }
-    if (isset($_POST['relay2on']))
-    {
-        system(" gpio mode 22 out ") ; 
-        system(" gpio write 22 1") ; 
-        //echo "on";
-    }
-    else if (isset($_POST['relay2off']))
-    {
-        system(" gpio mode 22 out ") ; 
-        system(" gpio write 22 0") ; 
-        //echo "off";
-    }
-    if (isset($_POST['relay3on']))
-    {
-        system(" gpio mode 27 out ") ; 
-        system(" gpio write 27 1") ; 
-        //echo "on";
-    }
-    else if (isset($_POST['relay3off']))
-    {
-        system(" gpio mode 27 out ") ; 
-        system(" gpio write 27 0") ; 
-        //echo "off";
-    }
-    if (isset($_POST['relay4on']))
-    {
-        system(" gpio mode 17 out ") ; 
-        system(" gpio write 17 1") ; 
-        //echo "on";
-    }
-    else if (isset($_POST['relay4off']))
-    {
-        system(" gpio mode 17 out ") ; 
-        system(" gpio write 17 0") ; 
-        //echo "off";
-    }
-    /*echo "relay 1=";system("gpio read 24");
-    echo "relay 2=";system("gpio read 22");
-    echo "relay 3=";system("gpio read 27");
-    echo "relay 4=";system("gpio read 17");*/
+    include './job/relay.php'
 ?>
 <!DOCTYPE html>
 <?php include 'head.php'; ?>
@@ -228,31 +177,55 @@ if (isset($_SESSION['ok'])) { ?>
 						</div>
 					</div>
 					<hr>
+                    <?php 
+                        $sql	= 'select * from sensor where id="23"';
+                        $query	= mysqli_query($conn,$sql);
+                        while($row = mysqli_fetch_array($query))
+                        {
+                            $sens_name1 = $row['sens_name'];
+                        }
+                        $sql	= 'select * from sensor where id="24"';
+                        $query	= mysqli_query($conn,$sql);
+                        while($row = mysqli_fetch_array($query))
+                        {
+                            $sens_name2 = $row['sens_name'];
+                        }
+                        $sql	= 'select * from sensor where id="25"';
+                        $query	= mysqli_query($conn,$sql);
+                        while($row = mysqli_fetch_array($query))
+                        {
+                            $sens_name3 = $row['sens_name'];
+                        }
+                        $sql	= 'select * from sensor where id="26"';
+                        $query	= mysqli_query($conn,$sql);
+                        while($row = mysqli_fetch_array($query))
+                        {
+                            $sens_name4 = $row['sens_name'];
+                        }
+
+                    ?>
 					<div class="col-12 text-center">
-                        <form method="post">
-                            <button class="btn btn-sm btn-success" name="relay1on">Relay 1 ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay1off">Relay 1 OFF</button>
-                        </form>
+                        <form method="post" action="relay.php">
+                            <button type ="submit" class="btn btn-sm btn-success" name="relay1on"><?php echo $sens_name1;?> ON</button>
+                            <button type ="submit" class="btn btn-sm btn-danger" name="relay1off"><?php echo $sens_name1;?> OFF</button>
+                        
                     </div>
                     <br>
 					<div class="col-12 text-center">
-                        <form method="post">
-                            <button class="btn btn-sm btn-success" name="relay2on">Relay 2 ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay2off">Relay 2 OFF</button>
-                        </form>
+                            <button class="btn btn-sm btn-success" name="relay2on"><?php echo $sens_name2;?> ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay2off"><?php echo $sens_name2;?> OFF</button>
+                        
 					</div>
                     <br>
                     <div class="col-12 text-center">
-                        <form method="post">
-                            <button class="btn btn-sm btn-success" name="relay3on">Relay 3 ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay3off">Relay 3 OFF</button>
-                        </form>
+                            <button class="btn btn-sm btn-success" name="relay3on"><?php echo $sens_name3;?> ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay3off"><?php echo $sens_name3;?> OFF</button>
+                        
                     </div>
                     <br>
 					<div class="col-12 text-center">
-                        <form method="post">
-                            <button class="btn btn-sm btn-success" name="relay4on">Relay 4 ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay4off">Relay 4 OFF</button>
+                            <button class="btn btn-sm btn-success" name="relay4on"><?php echo $sens_name4;?> ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay4off"><?php echo $sens_name4;?> OFF</button>
                         </form>
 					</div>
 					<br>
