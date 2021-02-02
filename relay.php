@@ -1,5 +1,4 @@
 <?php
-include 'conn.php';
 
 $id_rly1=23;
 $id_rly2=24;
