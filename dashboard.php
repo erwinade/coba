@@ -122,6 +122,7 @@
                                             $id_sens = $row['id'];
                                             $sens_name = $row['sens_name'];
                                             $sens_type = $row['sens_type'];
+                                            $type = $row['sens_type'];
                                             $sens_value = $row['sens_value'];
                                             $status = $row['status_sensor'];
                                             $threshold_min = $row['threshold_min'];
@@ -152,13 +153,26 @@
                                                 } else {
                                                     echo "Error updating record: " . $conn->error;
                                                 }
+
+                                               if ($row['sens_type'] == "internal/temp")
+                                                {
+                                                        $satuan = "C";
+                                                }
+                                                if ($row['sens_type'] == "internal/storage")
+                                                {
+                                                        $satuan = "%";
+                                                }
+                                                if ($row['sens_type'] == "internal/voltage")
+                                                {
+                                                        $satuan = "V";
+                                                }
                                     ?>
                                     <tbody class="rack-table">
                                         <tr>
                                             <td><?php echo $id; ?></td>
                                             <td><?php echo $sens_name; ?></td>
-                                            <td><?php echo $sens_type; ?></td>
-                                            <td><?php echo $sens_value; ?></td>
+                                            <td><?php echo $type; ?></td>
+                                            <td><?php echo $sens_value; ?>&nbsp;<?php echo $satuan;?></td>
                                             <td><?php echo $status; ?></td>
                                             <td style="text-align:center"><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" />&nbsp;&nbsp;<input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" />
                                         </tr>
@@ -360,9 +374,9 @@
                                             <option value="hum">hum</option>  
                                             <option value="input">input</option>  
                                             <option value="relay">relay</option>  
-                                            <option value="internal">internal/temp</option> 
-                                            <option value="internal">internal/storage</option> 
-                                            <option value="internal">internal/voltage</option> 
+                                            <option value="internal/temp">internal/temp</option> 
+                                            <option value="internal/storage">internal/storage</option> 
+                                            <option value="internal/voltage">internal/voltage</option> 
                                         </select>  
                                         <br /> 
                                         <label>Threshold Min</label>  
@@ -375,8 +389,14 @@
                                         <input type="text" name="threshold_max" id="threshold_max" class="form-control" />  
                                         <br />  
                                         <label>Status Sensor</label>  
-                                        <input type="text" name="status_sensor" id="status_sensor" class="form-control" />  
-                                        <br />  
+                                        <input type="text" name="1" id="status_sensor" class="form-control" />  
+                                        <br />
+                                        <label>Status Alert Email</label>  
+                                        <select name="alarm_cek" id="alarm_cek" class="form-control">  
+                                            <option value="1">Alert Cek</option>  
+                                            <option value="0">No Alert</option>  
+                                        </select> 
+                                        <br />
                                         <input type="hidden" name="employee_id" id="employee_id" /> 
                                         <br /> 
                                         <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
@@ -388,6 +408,7 @@
                         </div>  
                     </div>  
                 </div>  
+                
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
@@ -399,7 +420,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2019 Admin Wrap Admin by themedesigner.in
+                © 2019 Admin Wrap Admin by themedesigner.in <?php echo $_POST["alarm_cek"]; ?>
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -465,6 +486,7 @@
                             $('#sens_value').val(data.sens_value); 
                             $('#threshold_max').val(data.threshold_max);   
                             $('#status_sensor').val(data.status_sensor);
+                            $('#alarm_cek').val(data.alarm_cek);
                             $('#employee_id').val(data.id);  
                             $('#insert').val("Update");  
                             $('#add_data_Modal').modal('show');  
