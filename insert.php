@@ -8,9 +8,10 @@
      $sens_type = mysqli_real_escape_string($conn, $_POST["sens_type"]);  
      $threshold_min = mysqli_real_escape_string($conn, $_POST["threshold_min"]);  
      $sens_value = mysqli_real_escape_string($conn, $_POST["sens_value"]);  
-     $threshold_max = mysqli_real_escape_string($conn, $_POST["threshold_max"]);  
+     $threshold_max = mysqli_real_escape_string($conn, $_POST["threshold_max"]); 
+     $alarm_cek = mysqli_real_escape_string($conn, $_POST["alarm_cek"]); 
 
-     
+
      if($_POST["employee_id"] != '')  
      {  
           $query = "  UPDATE sensor   
@@ -18,7 +19,8 @@
           sens_type='$sens_type',   
           threshold_min='$threshold_min',   
           sens_value = '$sens_value',   
-          threshold_max = '$threshold_max'
+          threshold_max = '$threshold_max',
+          alarm_cek = '$alarm_cek'
           WHERE id='".$_POST["employee_id"]."'";  
           // $messthreshold_max = 'Data Updated';  
           if(mysqli_query($conn, $query))  
@@ -31,8 +33,8 @@
      }  
      else  
      {  
-          $query = "INSERT INTO sensor(sens_name, sens_type, threshold_min, sens_value, threshold_max)  
-          VALUES('$sens_name', '$sens_type', '$threshold_min', '$sens_value', '$threshold_max');  
+          $query = "INSERT INTO sensor(sens_name, sens_type, threshold_min, sens_value, threshold_max, alarm_cek)  
+          VALUES('$sens_name', '$sens_type', '$threshold_min', '$sens_value', '$threshold_max', '$alarm_cek');  
           ";  
           // $message = 'Data Inserted';  
 
