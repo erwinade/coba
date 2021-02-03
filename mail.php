@@ -24,6 +24,6 @@ $mail->SetFrom($email_user,"Kepala Utama"); //set email pengirim
 $mail->Subject = "Alert MONSiS-8 THD"; //subyek email
 $mail->AddAddress("soendev@gmail.com","nama email tujuan");  //tujuan email
 $mail->MsgHTML("Testing...");
-if($mail->Send()) echo "Message has been sent";
+if($mail->Send()) header("location:setting.php");
 else echo "Failed to sending message";
 ?>

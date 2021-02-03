@@ -208,6 +208,8 @@
                                                         <br>
                                                         <button type="submit" name="email" class="btn btn-info">Submit</button>
                                                     </form>
+                                                    <br>
+                                                    <button type="submit" onclick="window.location.href='mail.php'" class="btn btn-info">Email Check</button>
                                                     </div>
                                                 </div>
                                             </div>
