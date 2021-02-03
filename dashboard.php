@@ -420,7 +420,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2019 Admin Wrap Admin by themedesigner.in <?php echo $_POST["alarm_cek"]; ?>
+                © 2019 Admin Wrap Admin by themedesigner.in
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
