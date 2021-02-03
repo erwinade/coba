@@ -109,6 +109,7 @@
                                             <th>Type</th>
                                             <th>Value</th>
                                             <th>Status</th>
+                                            <th>Timestamp</th>
                                         </tr>
                                     </thead>
                                     <?php 
@@ -121,6 +122,7 @@
                                             $type = $data['sens_type'];
                                             $sens_value = $data['sens_value'];
                                             $status = $data['status_sensor'];
+                                            $timestamp = $data['created_at'];
                                     ?>
                                     <tbody class="rack-table">
                                         <tr>
@@ -129,6 +131,7 @@
                                             <td><?php echo $type; ?></td>
                                             <td><?php echo $sens_value; ?></td>
                                             <td><?php echo $status; ?></td>
+                                            <td><?php echo $timestamp; ?></td>
                                         </tr>
                                     </tbody>     
                                     <?php
