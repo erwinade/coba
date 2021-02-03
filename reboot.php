@@ -155,10 +155,8 @@
                             "address 190.108.1.200\n".
                             "netmask 255.255.255.0\n\n".
                             "dns-nameservers ".$ip1.".".$ip2.".".$ip3.".".$ip4."\n";
-                    /*fwrite($myfile, $txt);
-                    $txt = "Minnie Mouse\n";*/
-                    //fwrite($myfile, $txt);
-                    //fclose($myfile);
+                    fwrite($myfile, $txt);
+                    fclose($myfile);
                     //echo $txt;
                 ?>
 
