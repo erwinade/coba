@@ -33,8 +33,9 @@ if(isset($_POST['email'])){ //['ttambah'] merupakan name dari button di form tam
 	$Username	= $_POST['emailname'];
 	$Email 		= $_POST['email_user'];
 	$Smtp		= $_POST['smtp'];
+	$Pswd		= $_POST['pswd'];
 	
-	$sql	= $query="UPDATE email SET name='$Username', email_user='$Email', smtp='$Smtp' where id = 1";
+	$sql	= $query="UPDATE email SET name='$Username', email_user='$Email', smtp='$Smtp', password='$Pswd' where id = 1";
 	$query	= mysqli_query($conn,$sql);
 	
 	if($query){

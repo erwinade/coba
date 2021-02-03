@@ -182,19 +182,24 @@
                                                         while($internal = mysqli_fetch_array($query5))
                                                         {
                                                             $id = $internal['id'];
-                                                            $description = $internal['name'];
+                                                            $emailname = $internal['email_name'];
                                                             $email = $internal['email_user'];
                                                             $smtp = $internal['smtp'];
+                                                            $pswd = $internal['password'];
                                                     ?>
                                                     <form method='post' action='aksi.php'>
                                                         <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                                 <tr>
                                                                     <th>Nama</th>
-                                                                    <td><input type="text" class="form-control" id="Emailname" required="required" name="emailname" placeholder="<?php echo $description; ?>"></td>
+                                                                    <td><input type="text" class="form-control" id="Emailname" required="required" name="emailname" placeholder="<?php echo $emailname; ?>"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Email</th>
                                                                     <td><input type="text" class="form-control" id="Email_user" required="required" name="email_user" placeholder="<?php echo $email; ?>"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Password</th>
+                                                                    <td><input type="text" class="form-control" id="Pswd" required="required" name="pswd" placeholder="***********"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>SMPT</th>
