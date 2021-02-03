@@ -1,93 +1,51 @@
 <?php
-    include './conn.php';
-    include './job/relay.php'
+    include 'config/db.php';
+    include 'conn.php';
+    include 'relay.php';
+
+    $db_conn = new db();
+
 ?>
-<!DOCTYPE html>
-<?php include 'head.php'; ?>
-<link rel="stylesheet" type="text/css" href="assets/node_modules/daterangepicker/daterangepicker.css" />
-<body class="fix-header fix-sidebar card-no-border">
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="loader">
-            <div class="loader__figure"></div>
-            <p class="loader__label">Loading</p>
+
+
+<?php include '_partials/head.php'; ?>
+<?php include '_partials/header.php'; ?>
+
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Sensor Info</h3>
+            </div>
+        </div>
+	
+    <?php if (isset($_SESSION['error'])) { ?>
+        <div class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">x</a>
+        <?php echo $_SESSION['error']; ?></div>
+    <?php unset($_SESSION['error']);} ?>
+                
+    <?php if (isset($_SESSION['ok'])) { ?>
+        <div class="alert alert-success"><a class="close" data-dismiss="alert" href="#">x</a>
+        <?php echo $_SESSION['ok']; ?></div>
+    <?php unset($_SESSION['ok']);} ?>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <label for="">Pilih Sensor</label>
+                    <select name="sensor" id="" class="form-control">
+                        <?php $db_conn->query('SELECT * FROM sensor where sens_type in ("temp","hum")')->fetchAll(function($sensor) { ?>
+                             <option value=""><?php  echo $sensor['sens_name'];  ?></option>
+                            
+                           <?php });?>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar">
-        <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php">
-                        <!-- Logo icon -->
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="img/soendev.png" alt="homepage" class="dark-logo" width="230px" />
-                        </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto">
-                        
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                       <?php include 'infodevice.php'?>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <?php include 'menu.php'; ?>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-<div class="page-wrapper">
-<div class="container-fluid">
-<div class="row page-titles">
-                    <div class="col-md-5 align-self-center">
-                        <h3 class="text-themecolor">Sensor Info</h3>
-                    </div>
-                </div>
-	<?php
-
-if (isset($_SESSION['error'])) { ?>
-	<div class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">x</a>
-	<?php echo $_SESSION['error']; ?></div><?php unset($_SESSION['error']);} ?>
-	<?php
-
-if (isset($_SESSION['ok'])) { ?>
-	<div class="alert alert-success"><a class="close" data-dismiss="alert" href="#">x</a>
-	<?php echo $_SESSION['ok']; ?></div><?php unset($_SESSION['ok']);} ?>
     <!-- Example row of columns -->
     <div class="row">
 		<div class="col-lg-8">
@@ -247,61 +205,9 @@ if (isset($_SESSION['ok'])) { ?>
                 <!-- ============================================================== -->
 
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer">
-                © 2019 Admin Wrap Admin by themedesigner.in
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="assets/node_modules/jquery/jquery.min.js"></script>
-    <!-- Bootstrap popper Core JavaScript -->
-    <script src="assets/node_modules/bootstrap/js/popper.min.js"></script>
-    <script src="assets/node_modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/node_modules/ps/perfect-scrollbar.jquery.min.js"></script>
-    <!--Wave Effects -->
-    <script src="js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="js/custom.min.js"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!--morris JavaScript -->
-    <script src="assets/node_modules/raphael/raphael.min.js"></script>
-    <script src="assets/node_modules/morrisjs/morris.min.js"></script>
-    <!--c3 JavaScript -->
-    <script src="assets/node_modules/d3/d3.min.js"></script>
-    <script src="assets/node_modules/c3-master/c3.min.js"></script>
-    <!-- Popup message jquery -->
-    <script src="assets/node_modules/toast-master/js/jquery.toast.js"></script>
-    <!-- Chart JS -->
-    <!-- ============================================================== -->
-    <!-- Style switcher -->
-    <!-- ============================================================== -->
-    <script src="assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
-    <script src="assets/node_modules/daterangepicker/moment.min.js"></script>
-    <script src="assets/node_modules/daterangepicker/daterangepicker.js"></script>
 
+    <?php include "_partials/footer.php" ?>
+    
 
 <?php
 //data sementara sebelum ada data dari database
