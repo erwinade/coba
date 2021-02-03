@@ -20,9 +20,9 @@ $mail->Port = 465;
 $mail->SMTPAuth = true;
 $mail->Username = $email_user; //user email
 $mail->Password = $pswd; //password email 
-$mail->SetFrom($email_user,"Nama pengirim"); //set email pengirim
-$mail->Subject = "Testing"; //subyek email
-//$mail->AddAddress("soendev@gmail.com","nama email tujuan");  //tujuan email
+$mail->SetFrom($email_user,"Kepala Utama"); //set email pengirim
+$mail->Subject = "Alert MONSiS-8 THD"; //subyek email
+$mail->AddAddress("soendev@gmail.com","nama email tujuan");  //tujuan email
 $mail->MsgHTML("Testing...");
 if($mail->Send()) echo "Message has been sent";
 else echo "Failed to sending message";
