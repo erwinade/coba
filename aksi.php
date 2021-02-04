@@ -32,10 +32,14 @@ if(isset($_POST['dvc'])){ //['ttambah'] merupakan name dari button di form tamba
 if(isset($_POST['email'])){ //['ttambah'] merupakan name dari button di form tambah
 	$Username	= $_POST['emailname'];
 	$Email 		= $_POST['email_user'];
+	$Email_to 		= $_POST['email_to'];
 	$Smtp		= $_POST['smtp'];
 	$Pswd		= $_POST['pswd'];
+	$port		= $_POST['port'];
+	$Smtps		= $_POST['smtps'];
 	
-	$sql	= $query="UPDATE email SET name='$Username', email_user='$Email', smtp='$Smtp', password='$Pswd' where id = 1";
+	
+	$sql	= $query="UPDATE email SET name='$Username', email_user='$Email', smtp='$Smtp', password='$Pswd', email_to='$Email_to', port='$port', smtps=$Smtps where id = 1";
 	$query	= mysqli_query($conn,$sql);
 	
 	if($query){
