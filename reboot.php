@@ -45,8 +45,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav mr-auto">
                         <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                       
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -124,7 +123,7 @@
                                     <label for="fname">Gateway &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;:</label>
                                     <input type="text" id="a" name="a" size="3" value=<?php echo $gt1;?>>:<input type="text" id="b" name="b" size="3" value=<?php echo $gt2;?>>:<input type="text" id="c" name="c" size="3" value=<?php echo $gt3;?>>:<input type="text" id="d" name="d" size="3" value=<?php echo $gt4;?>><br>
 
-                                    <label for="fname">Subnetmask &nbsp;&nbsp;:</label>
+                                    <label for="fname">Subnetmask &nbsp;&nbsp;&nbsp;&nbsp;:</label>
                                     <input type="text" id="a" name="a" size="3" value=<?php echo $sub1;?>>:<input type="text" id="b" name="b" size="3" value=<?php echo $sub2;?>>:<input type="text" id="c" name="c" size="3" value=<?php echo $sub3;?>>:<input type="text" id="d" name="d" size="3" value=<?php echo $sub4;?>><br>
 
                                     <label for="fname">DNS IP &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
