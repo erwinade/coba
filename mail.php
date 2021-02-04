@@ -8,21 +8,24 @@ while($row = mysqli_fetch_array($query))
 {
     $email_name = $row['email_name'];
     $email_user = $row['email_user'];
+    $email_to = $row['email_to'];
     $pswd = $row['password'];
     $smtp = $row['smtp'];
+    $port = $row['port'];
+    $smtps = $row['smtps'];
 }
 $mail = new PHPMailer; 
 $mail->IsSMTP();
-$mail->SMTPSecure = 'ssl'; 
+$mail->SMTPSecure = $smtps; 
 $mail->Host = $smtp; //host masing2 provider email
 $mail->SMTPDebug = 2;
-$mail->Port = 465;
+$mail->Port = $port;
 $mail->SMTPAuth = true;
 $mail->Username = $email_user; //user email
 $mail->Password = $pswd; //password email 
-$mail->SetFrom($email_user,"Kepala Utama"); //set email pengirim
+$mail->SetFrom($email_user,"Head of IT Engginer"); //set email pengirim
 $mail->Subject = "Alert MONSiS-8 THD"; //subyek email
-$mail->AddAddress("soendev@gmail.com","nama email tujuan");  //tujuan email
+$mail->AddAddress($email_to,"Admin MONSiS-8THD");  //tujuan email
 $mail->MsgHTML("Testing...");
 if($mail->Send()) header("location:setting.php");
 else echo "Failed to sending message";

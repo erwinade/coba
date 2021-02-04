@@ -179,7 +179,10 @@
                                                             $id = $internal['id'];
                                                             $emailname = $internal['email_name'];
                                                             $email = $internal['email_user'];
+                                                            $email_to = $internal['email_to'];
                                                             $smtp = $internal['smtp'];
+                                                            $smtps = $internal['smtps'];
+                                                            $port = $internal['port'];
                                                             $pswd = $internal['password'];
                                                     ?>
                                                     <form method='post' action='aksi.php'>
@@ -189,8 +192,12 @@
                                                                     <td><input type="text" class="form-control" id="Emailname" required="required" name="emailname" placeholder="<?php echo $emailname; ?>"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th>Email</th>
+                                                                    <th>Email Sender</th>
                                                                     <td><input type="text" class="form-control" id="Email_user" required="required" name="email_user" placeholder="<?php echo $email; ?>"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Email Recipient</th>
+                                                                    <td><input type="text" class="form-control" id="Email_to" required="required" name="email_to" placeholder="<?php echo $email_to; ?>"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Password</th>
@@ -199,6 +206,14 @@
                                                                 <tr>
                                                                     <th>SMPT</th>
                                                                     <td><input type="text" class="form-control" id="Smtp" required="required" name="smtp" placeholder="<?php echo $smtp; ?>"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Port</th>
+                                                                    <td><input type="text" class="form-control" id="Port" required="required" name="port" placeholder="<?php echo $port; ?>"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>SMPTS</th>
+                                                                    <td><input type="text" class="form-control" id="Smtps" required="required" name="smtps" placeholder="<?php echo $smtps; ?>"></td>
                                                                 </tr>
                                                             </tbody>
                                                             <?php
