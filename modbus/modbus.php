@@ -12,7 +12,7 @@
 <body bgcolor="#85C1E9">
 
 <?php
-$sql	= 'select * from tb_modbus';
+$sql	= 'select * from snmp';
 $query	= mysqli_query($conn,$sql);
 ?>
 
@@ -43,8 +43,6 @@ $query	= mysqli_query($conn,$sql);
 			$jumlah = $data['jumlah'];
 
 			 	$tarik = exec("/var/www/html/modpoll/linux_arm-eabihf/modpoll -m enc -$fungsi -a $alamt -r $register -c $jumlah -1 192.168.0.203",$output1);
-				//$b = exec("/var/www/html/modpoll/linux_arm-eabihf/modpoll -m enc -t3 -a 7 -r 3 -c 1 -1 192.168.0.203",$output2);
-				//$c = exec("/var/www/html/modpoll/linux_arm-eabihf/modpoll -b 9600 -p none -m rtu -t3 -a 8 -r 2 -c 1 -1 /dev/ttyUSB0",$output3);
 
 				$md = (substr($output1[10],5,3))/10;
 	?>
