@@ -262,12 +262,17 @@
                                                             $id = $internal['id'];
                                                             $description = $internal['name'];
                                                             $bot = $internal['bot_id'];
+                                                            $token = $internal['token'];
                                                     ?>
                                                     <form method="post" action="aksi.php">
                                                         <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                                 <tr>
                                                                     <th>Nama</th>
                                                                     <td><input type="text" class="form-control" id="Telename" required="required" name="telename" placeholder="<?php echo $description; ?>"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Token</th>
+                                                                    <td><input type="text" class="form-control" id="Token" required="required" name="token" placeholder="<?php echo $token; ?>"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Bot_Id</th>

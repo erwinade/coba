@@ -53,8 +53,9 @@ if(isset($_POST['email'])){ //['ttambah'] merupakan name dari button di form tam
 if(isset($_POST['tele'])){ //['ttambah'] merupakan name dari button di form tambah
 	$telename	= $_POST['telename'];
 	$bot	= $_POST['bot'];
+	$token	= $_POST['token'];
 	
-	$sql	= $query="UPDATE telegram SET name='$telename', bot_id='$bot' where id = 1";
+	$sql	= $query="UPDATE telegram SET name='$telename', bot_id='$bot', token='$token' where id = 1";
 	$query	= mysqli_query($conn,$sql);
 	
 	if($query){
