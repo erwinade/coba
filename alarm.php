@@ -106,11 +106,13 @@
                                         </tr>
                                     </thead>
                                     <?php 
-                                        $sql	= 'select * from alarm_logs';
+                                        $no=0;
+                                        $sql	= 'SELECT *FROM alarm_logs ORDER BY created_at DESC';
                                         $query	= mysqli_query($conn,$sql);
                                         while($data = mysqli_fetch_array($query))
                                         {
-                                            $id = $data['id'];
+                                            $no++;
+                                            $id = $no;
                                             $description = $data['sens_name'];
                                             $type = $data['sens_type'];
                                             $sens_value = $data['sens_value'];

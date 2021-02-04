@@ -194,7 +194,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Password</th>
-                                                                    <td><input type="text" class="form-control" id="Pswd" required="required" name="pswd" placeholder="***********"></td>
+                                                                    <td><input type="password" class="form-control" id="Pswd" required="required" name="pswd" placeholder="***********"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>SMPT</th>
