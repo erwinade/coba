@@ -29,7 +29,7 @@ try:
 
         db1.commit()
         ############ batas input 1
-        s2 = GPIO.input(7)
+        s2 = GPIO.input(11)
         db2 = mysql.connector.connect(
         user='root', 
         password='holmes123', 
@@ -37,12 +37,69 @@ try:
         database='raspi') 
 
         cursor2 = db2.cursor(dictionary=True)
-        sql2 = "UPDATE sensor SET sens_value = %s, status_sensor = %s WHERE id = '17'"
+        sql2 = "UPDATE sensor SET sens_value = %s, status_sensor = %s WHERE id = '18'"
         val2 = (s2, "Normal")
         cursor2.execute(sql2,val2)
 
         db2.commit()
         ############ batas input 2
+        s3 = GPIO.input(13)
+        db3 = mysql.connector.connect(
+        user='root', 
+        password='holmes123', 
+        host='localhost', 
+        database='raspi') 
+
+        cursor3 = db3.cursor(dictionary=True)
+        sql3 = "UPDATE sensor SET sens_value = %s, status_sensor = %s WHERE id = '19'"
+        val3 = (s3, "Normal")
+        cursor3.execute(sql3,val3)
+
+        db3.commit()
+        ############ batas input 3
+        s4 = GPIO.input(15)
+        db4 = mysql.connector.connect(
+        user='root', 
+        password='holmes123', 
+        host='localhost', 
+        database='raspi') 
+
+        cursor4 = db4.cursor(dictionary=True)
+        sql4 = "UPDATE sensor SET sens_value = %s, status_sensor = %s WHERE id = '20'"
+        val4 = (s4, "Normal")
+        cursor4.execute(sql4,val4)
+
+        db4.commit()
+        ############ batas input 4
+        s5 = GPIO.input(29)
+        db5 = mysql.connector.connect(
+        user='root', 
+        password='holmes123', 
+        host='localhost', 
+        database='raspi') 
+
+        cursor5 = db5.cursor(dictionary=True)
+        sql5 = "UPDATE sensor SET sens_value = %s, status_sensor = %s WHERE id = '21'"
+        val5 = (s5, "Normal")
+        cursor5.execute(sql5,val5)
+
+        db5.commit()
+        ############ batas input 2
+        s6 = GPIO.input(31)
+        db6 = mysql.connector.connect(
+        user='root', 
+        password='holmes123', 
+        host='localhost', 
+        database='raspi') 
+
+        cursor6 = db6.cursor(dictionary=True)
+        sql6 = "UPDATE sensor SET sens_value = %s, status_sensor = %s WHERE id = '22'"
+        val6 = (s6, "Normal")
+        cursor6.execute(sql6,val6)
+
+        db6.commit()
+        ############ batas input 3
+        
 
 # When you press ctrl+c, this will be called
 finally:
