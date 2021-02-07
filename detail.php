@@ -193,7 +193,7 @@
             
 			<div class="row">
 				<div class="col-lg-12 text-center">
-                <span style="font-size:15px;font-weight:500">Mini Home Automation - RPi2 - Whatsapp</span>
+                <span style="font-size:15px;font-weight:500">Monitoring Sistem 8 Temperture Humidity</span>
 				</div>
 			</div>
 		</div>
