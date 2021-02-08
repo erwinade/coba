@@ -230,7 +230,7 @@
     foreach ($sensors as $sen) {
         $id_sensor = $sen['id'];
 
-        $data_log[] = $db_conn->query('SELECT * FROM sensor_log where id_sens = "'.$id_sensor.'" order by id')->fetchAll();
+        $data_log[] = $db_conn->query('SELECT slog.sens_value, slog.created_at, sensor.sens_name  FROM sensor_log slog inner join sensor on sensor.id = slog.id_sens where slog.id_sens = "'.$id_sensor.'" order by slog.id')->fetchAll();
     }
 
 
@@ -251,7 +251,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [<?php foreach ($dt as $label) { echo '"' . $label['created_at'] . '",';}?>],
         datasets: [{
-            label: 'Sensor 1',
+            label: '<?php echo $dt[0]['sens_name']; ?>',
             data: [<?php foreach ($dt as $data) { echo $data['sens_value'] . ',';}?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
