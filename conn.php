@@ -1,7 +1,8 @@
 <?php
+
 $servername 	= "127.0.0.1";
-$username 	    = "gatot";
-$password 	    = "123";
+$username 	    = "root";
+$password 	    = "";
 $db		        = "raspi";
 
 // Create connection

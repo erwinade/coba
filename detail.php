@@ -5,6 +5,11 @@
 
     $db_conn = new db();
 
+    $sensor_id = 1;
+    if(isset($_GET['sensor_id']))
+    {
+        $sensor_id = $_GET['sensor_id'];
+    }
 ?>
 
 
@@ -36,12 +41,13 @@
             <div class="card">
                 <div class="card-body">
                     <label for="">Pilih Sensor</label>
-                    <select name="sensor" id="" class="form-control">
-                        <?php $db_conn->query('SELECT * FROM sensor where sens_type in ("temp","hum")')->fetchAll(function($sensor) { ?>
-                             <option value=""><?php  echo $sensor['sens_name'];  ?></option>
-                            
+                    <form action="detail.php" id="form-select" method="get">
+                    <select name="sensor_id" id="select-sensor" class="form-control">
+                        <?php $db_conn->query('SELECT * FROM sensor_utama where group_name = "sensors" order by sens_name')->fetchAll(function($sensor) use ($sensor_id) { ?>
+                             <option value="<?php  echo $sensor['id'];  ?>" <?php if($sensor_id == $sensor['id']) { echo "selected"; } ?>><?php  echo $sensor['sens_name'];  ?></option>
                            <?php });?>
                     </select>
+                    </form>
                 </div>
             </div>
         </div>
@@ -54,7 +60,7 @@
 				<div class="card-header bg-info" >
 				 <h4 class="text-white"><i class="fas fa-signal"></i> Temperature</strong> </h4>
 				</div></br>
-				<canvas id="tempChart" width="400" height="200"></canvas>
+				<canvas id="tempChart-0" width="400" height="200"></canvas>
 			</div>
 			</div>
 			<div class="raw">
@@ -62,7 +68,7 @@
                     <div class="card-header bg-info" >
                         <h4 class="text-white"><i class="fas fa-signal"></i> Humidity</strong> </h4>
                     </div></br>
-				<canvas id="humChart" width="400" height="200"></canvas>
+				<canvas id="tempChart-1" width="400" height="200"></canvas>
                 </div>
 			</div>
 		</div>
@@ -136,64 +142,68 @@
 					</div>
 					<hr>
                     <?php 
-                        $sql	= 'select * from sensor where id="23"';
-                        $query	= mysqli_query($conn,$sql);
-                        while($row = mysqli_fetch_array($query))
-                        {
-                            $sens_name1 = $row['sens_name'];
-                        }
-                        $sql	= 'select * from sensor where id="24"';
-                        $query	= mysqli_query($conn,$sql);
-                        while($row = mysqli_fetch_array($query))
-                        {
-                            $sens_name2 = $row['sens_name'];
-                        }
-                        $sql	= 'select * from sensor where id="25"';
-                        $query	= mysqli_query($conn,$sql);
-                        while($row = mysqli_fetch_array($query))
-                        {
-                            $sens_name3 = $row['sens_name'];
-                        }
-                        $sql	= 'select * from sensor where id="26"';
-                        $query	= mysqli_query($conn,$sql);
-                        while($row = mysqli_fetch_array($query))
-                        {
-                            $sens_name4 = $row['sens_name'];
-                        }
+                        $relay = $db_conn->query('SELECT * FROM sensor where sens_type = "relay" order by id')->fetchAll();
+
+                        // $sql	= 'select * from sensor where id="23"';
+                        // $query	= mysqli_query($conn,$sql);
+                        // while($row = mysqli_fetch_array($query))
+                        // {
+                        //     $sens_name1 = $row['sens_name'];
+                        // }
+                        // $sql	= 'select * from sensor where id="24"';
+                        // $query	= mysqli_query($conn,$sql);
+                        // while($row = mysqli_fetch_array($query))
+                        // {
+                        //     $sens_name2 = $row['sens_name'];
+                        // }
+                        // $sql	= 'select * from sensor where id="25"';
+                        // $query	= mysqli_query($conn,$sql);
+                        // while($row = mysqli_fetch_array($query))
+                        // {
+                        //     $sens_name3 = $row['sens_name'];
+                        // }
+                        // $sql	= 'select * from sensor where id="26"';
+                        // $query	= mysqli_query($conn,$sql);
+                        // while($row = mysqli_fetch_array($query))
+                        // {
+                        //     $sens_name4 = $row['sens_name'];
+                        // }
 
                     ?>
+                    <form method="post" action="relay.php">
+                    <?php foreach ($relay as $rel) { ?>
+                     
 					<div class="col-12 text-center">
-                        <form method="post" action="relay.php">
-                            <button type ="submit" class="btn btn-sm btn-success" name="relay1on"><?php echo $sens_name1;?> ON</button>
-                            <button type ="submit" class="btn btn-sm btn-danger" name="relay1off"><?php echo $sens_name1;?> OFF</button>
+                            <button type ="submit" class="btn btn-sm btn-success" name="relay1on"><?php echo $rel['sens_name'];?> ON</button>
+                            <button type ="submit" class="btn btn-sm btn-danger" name="relay1off"><?php echo $rel['sens_name'];?> OFF</button>
                         
                     </div>
                     <br>
-					<div class="col-12 text-center">
-                            <button class="btn btn-sm btn-success" name="relay2on"><?php echo $sens_name2;?> ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay2off"><?php echo $sens_name2;?> OFF</button>
+                    <?php } ?>
+					<!-- <div class="col-12 text-center">
+                            <button class="btn btn-sm btn-success" name="relay2on"><?php //echo $sens_name2;?> ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay2off"><?php //echo $sens_name2;?> OFF</button>
                         
 					</div>
                     <br>
                     <div class="col-12 text-center">
-                            <button class="btn btn-sm btn-success" name="relay3on"><?php echo $sens_name3;?> ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay3off"><?php echo $sens_name3;?> OFF</button>
+                            <button class="btn btn-sm btn-success" name="relay3on"><?php //echo $sens_name3;?> ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay3off"><?php //echo $sens_name3;?> OFF</button>
                         
                     </div>
                     <br>
 					<div class="col-12 text-center">
-                            <button class="btn btn-sm btn-success" name="relay4on"><?php echo $sens_name4;?> ON</button>
-                            <button class="btn btn-sm btn-danger" name="relay4off"><?php echo $sens_name4;?> OFF</button>
-                        </form>
-					</div>
-					<br>
+                            <button class="btn btn-sm btn-success" name="relay4on"><?php// echo $sens_name4;?> ON</button>
+                            <button class="btn btn-sm btn-danger" name="relay4off"><?php //echo $sens_name4;?> OFF</button>
+					</div> -->
+                    </form>
 				</div>
 			</div>
 
             
 			<div class="row">
 				<div class="col-lg-12 text-center">
-                <span style="font-size:15px;font-weight:500">Monitoring Sistem 8 Temperture Humidity</span>
+                <span style="font-size:15px;font-weight:500">Mini Home Automation - RPi2 - Whatsapp</span>
 				</div>
 			</div>
 		</div>
@@ -214,6 +224,15 @@
 
 // data dari database nnti berupa log sensor berdasarkan tanggal input sensor
 
+    $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sensor_id.'" order by id')->fetchAll();
+
+    $data_log = [];
+    foreach ($sensors as $sen) {
+        $id_sensor = $sen['id'];
+
+        $data_log[] = $db_conn->query('SELECT * FROM sensor_log where id_sens = "'.$id_sensor.'" order by id')->fetchAll();
+    }
+
 
     $tempLabel = ["1 Jan", "2 Jan","3 Jan","4 Jan", "5 Jan","6 Jan","7 Jan", "8 Jan","9 Jan","10 Jan", "11 Jan","12 Jan","13 Jan", "14 Jan","15 Jan"];
     $tempData = [60, 70,90, 89,88,87,86,85,84,83,82,81,80,79,78];
@@ -223,14 +242,17 @@
 ?>
 
 <script>
-var ctx = document.getElementById('tempChart');
+
+<?php foreach($data_log as $key =>  $dt) { ?>
+
+var ctx = document.getElementById('tempChart-<?php echo $key ?>');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [<?php foreach ($tempLabel as $label) { echo '"' . $label . '",';}?>],
+        labels: [<?php foreach ($dt as $label) { echo '"' . $label['created_at'] . '",';}?>],
         datasets: [{
             label: 'Sensor 1',
-            data: [<?php foreach ($tempData as $data) { echo $data . ',';}?>],
+            data: [<?php foreach ($dt as $data) { echo $data['sens_value'] . ',';}?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -261,34 +283,14 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var hum = document.getElementById('humChart');
-var humChart = new Chart(hum, {
-    type: 'line',
-    data: {
-        labels: [<?php foreach ($humLabel as $label) { echo '"' . $label . '",';}?>],
-        datasets: [{
-            label: "sensor hum 1",
-            data: [<?php foreach ($humData as $data) { echo '"' . $data . '",';}?>],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+<?php } ?>
+
 $('input[name="dates"]').daterangepicker();
+
+$('#select-sensor').change(function ()
+{
+    $('#form-select').submit();
+});
 </script>
 </body>
 
