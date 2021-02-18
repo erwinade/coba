@@ -391,12 +391,6 @@
                                         <label>Status Sensor</label>  
                                         <input type="text" name="1" id="status_sensor" class="form-control" />  
                                         <br />
-                                        <label>Status Alert Email</label>  
-                                        <select name="alarm_cek" id="alarm_cek" class="form-control">  
-                                            <option value="1">Alert Cek</option>  
-                                            <option value="0">No Alert</option>  
-                                        </select> 
-                                        <br />
                                         <input type="hidden" name="employee_id" id="employee_id" /> 
                                         <br /> 
                                         <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
@@ -486,7 +480,6 @@
                             $('#sens_value').val(data.sens_value); 
                             $('#threshold_max').val(data.threshold_max);   
                             $('#status_sensor').val(data.status_sensor);
-                            $('#alarm_cek').val(data.alarm_cek);
                             $('#employee_id').val(data.id);  
                             $('#insert').val("Update");  
                             $('#add_data_Modal').modal('show');  

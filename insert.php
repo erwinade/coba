@@ -9,7 +9,6 @@
      $threshold_min = mysqli_real_escape_string($conn, $_POST["threshold_min"]);  
      $sens_value = mysqli_real_escape_string($conn, $_POST["sens_value"]);  
      $threshold_max = mysqli_real_escape_string($conn, $_POST["threshold_max"]); 
-     $alarm_cek = mysqli_real_escape_string($conn, $_POST["alarm_cek"]); 
 
 
      if($_POST["employee_id"] != '')  
@@ -19,8 +18,7 @@
           sens_type='$sens_type',   
           threshold_min='$threshold_min',   
           sens_value = '$sens_value',   
-          threshold_max = '$threshold_max',
-          alarm_cek = '$alarm_cek'
+          threshold_max = '$threshold_max'
           WHERE id='".$_POST["employee_id"]."'";  
           // $messthreshold_max = 'Data Updated';  
           if(mysqli_query($conn, $query))  
