@@ -171,15 +171,18 @@
 
                     ?>
                     <form method="post" action="relay.php">
-                    <?php foreach ($relay as $rel) { ?>
+
+                    <?php 
+                    $no = 1;
+                    foreach ($relay as $rel) { ?>
                      
 					<div class="col-12 text-center">
-                            <button type ="submit" class="btn btn-sm btn-success" name="relay1on"><?php echo $rel['sens_name'];?> ON</button>
-                            <button type ="submit" class="btn btn-sm btn-danger" name="relay1off"><?php echo $rel['sens_name'];?> OFF</button>
+                            <button type ="submit" class="btn btn-sm btn-success" name="relay<?php echo $no; ?>on"><?php echo $rel['sens_name'];?> ON</button>
+                            <button type ="submit" class="btn btn-sm btn-danger" name="relay<?php echo $no; ?>off"><?php echo $rel['sens_name'];?> OFF</button>
                         
                     </div>
                     <br>
-                    <?php } ?>
+                    <?php $no++; } ?>
 					<!-- <div class="col-12 text-center">
                             <button class="btn btn-sm btn-success" name="relay2on"><?php //echo $sens_name2;?> ON</button>
                             <button class="btn btn-sm btn-danger" name="relay2off"><?php //echo $sens_name2;?> OFF</button>
