@@ -1,6 +1,8 @@
 <?php
 
 include "../conn.php";
+date_default_timezone_set('Asia/Jakarta');
+$wktu = date('Y-m-d  H:i:s');
 
 if(!isset($_GET['id_sens'])){
     echo "EROR, SIlahkan Input ID Sensor";
@@ -50,7 +52,7 @@ echo "<br>";
 
   // update sensor table by id 
 
-  $sql = "UPDATE sensor SET sens_value=$sens_value, sens_type='$sens_type' WHERE id=$id_sens";
+  $sql = "UPDATE sensor SET sens_value=$sens_value, sens_type='$sens_type', update_at='$wktu' WHERE id=$id_sens";
 
   if ($conn->query($sql) === TRUE) {
     echo "Berhasil Mengupdate Sensor </br>";
