@@ -219,7 +219,11 @@
     foreach ($sensors as $sen) {
         $id_sensor = $sen['id'];
 
-        $data_log[] = $db_conn->query('SELECT slog.sens_value, slog.created_at, sensor.sens_name  FROM sensor_log slog inner join sensor on sensor.id = slog.id_sens where slog.id_sens = "'.$id_sensor.'" order by slog.id')->fetchAll();
+        $data_log[] = $db_conn->query('SELECT slog.id, slog.sens_value, slog.created_at, sensor.sens_name  FROM 
+        (
+            SELECT * FROM sensor_log where id_sens = '.$id_sensor.' ORDER BY id DESC LIMIT 25
+        ) slog inner join sensor on sensor.id = slog.id_sens where slog.id_sens = '.$id_sensor.' order by slog.id'
+        )->fetchAll();
     }
 
 
