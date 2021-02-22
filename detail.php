@@ -6,10 +6,13 @@
     $db_conn = new db();
 
     $sensor_id = 1;
+    
     if(isset($_GET['sensor_id']))
     {
         $sensor_id = $_GET['sensor_id'];
     }
+
+    $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sensor_id.'" order by id')->fetchAll();
 ?>
 
 
@@ -79,6 +82,7 @@
                         <b class="text-white"><i class="fas fa-history"></i> Last Update</strong> </b>
                     </div>
 					<div class="row">
+                    <?php foreach ($sensors as $lastsen) { ?>
 					<div class="col-sm-6">
 						<div id="card" class="card card-info m-1 border-primary" style="border: 1px solid;border-radius: 3px;">
 							<div class="card-header" style="background-color:#d9edf7;#bce8f1;color:#31708f; border:-1px!important; ">
@@ -87,36 +91,20 @@
 										<i class="fa fa-tasks fa-1x"></i>
 									</div>
                                     <div class="col-11 text-right">
-										<span style="font-size:40px;font-weight:500">26</span>
+										<span style="font-size:40px;font-weight:500"><?php echo $lastsen['sens_value']; ?></span>
 									</div>
 								</div>
                             </div>
 							<div class="card-body">
-                            	<span class="pull-left" id="updateTemp">Update: 00:01:01</span></br>
-                                <span style="font-size:15px;font-weight:500">Temperature(&deg;C)</span>
+                            	<span class="pull-left" id="updateTemp"><small><?php echo $lastsen['update_at']; ?></small></span></br>
+                                <span style="font-size:15px;font-weight:500"><?php if($lastsen['sens_type'] == 'temp'){ echo "Temperature(&deg;C)";}else{ echo "Humidity(%)";} ?></span>
 								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-6">
-                    <div id="card" class="card card-info m-1 card-border border-primary" style="border: 1px solid;border-radius: 3px;">
-							<div class="card-header" style="background-color:#d9edf7;#bce8f1;color:#31708f; border:-1px!important; ">
-								<div class="row">
-									<div class="col-1">
-										<i class="fa fa-tasks fa-1x"></i>
-									</div>
-                                    <div class="col-11 text-right">
-										<span style="font-size:40px;font-weight:500">26</span>
-									</div>
-								</div>
-                            </div>
-							<div class="card-body">
-                            	<span class="pull-left" id="updateTemp">Update: 00:01:01</span></br>
-                                <span style="font-size:15px;font-weight:500">Humidity(%)</span>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
+                    
+                    <?php } ?>
+
 					</div>
 				</div>
 			</div>
@@ -226,8 +214,6 @@
 //data sementara sebelum ada data dari database
 
 // data dari database nnti berupa log sensor berdasarkan tanggal input sensor
-
-    $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sensor_id.'" order by id')->fetchAll();
 
     $data_log = [];
     foreach ($sensors as $sen) {
