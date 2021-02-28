@@ -11,6 +11,9 @@
                             <a class="waves-effect" href="detail.php"><i class="icon-Pie-Chart"></i><span class="hide-menu">Sensor Info</span></a>
                         </li>
                         <li> 
+                            <a class="waves-effect" href="panel.php"><i class="icon-Pie-Chart"></i><span class="hide-menu">Panel Info</span></a>
+                        </li>
+                        <li> 
                             <a class="waves-effect" href="alarm.php"><i class="icon-Pie-Chart"></i><span class="hide-menu">Alarm Logs</span></a>
                         </li>
                         <li> 
