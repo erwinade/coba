@@ -249,7 +249,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2019 Admin Wrap Admin by themedesigner.in
+                Copyright 2019 Soendev.com
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
