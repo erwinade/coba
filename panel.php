@@ -196,7 +196,7 @@
                                     <tbody>
                                         <!--  tabel panel tampil Current-->
                                         <tr>
-                                            <td>Current</td>
+                                            <td bgcolor="#00BFFF">Current</td>
                                             <td><?php echo $panel_cur;?></td>
                                             <td>Current 3 Phase</td>
                                             <td><?php echo $location_cur;?></td>
@@ -206,7 +206,7 @@
                                             <td><?php echo $i4;?></td>
                                         </tr>
                                         <tr>
-                                            <td>Voltage</td>
+                                            <td bgcolor="#00BFFF">Voltage</td>
                                             <td><?php echo $panel_cur;?></td>
                                             <td>Voltage 3 Phase</td>
                                             <td><?php echo $location_cur;?></td>
@@ -216,7 +216,7 @@
                                             <td><?php echo $v4;?></td>
                                         </tr>
                                         <tr>
-                                            <td>Power</td>
+                                            <td bgcolor="#00BFFF">Power</td>
                                             <td><?php echo $panel_cur;?></td>
                                             <td>Power 3 Phase</td>
                                             <td><?php echo $location_cur;?></td>
@@ -226,7 +226,7 @@
                                             <td><?php echo $p4;?></td>
                                         </tr>
                                         <tr>
-                                            <td>Kwh</td>
+                                            <td bgcolor="#DAA520">Kwh</td>
                                             <td colspan="7" bgcolor="#F5F5DC" align="center">123456.678</td>
                                         </tr>
                                     </tbody>
