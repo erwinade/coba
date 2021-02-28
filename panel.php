@@ -98,8 +98,8 @@
                                 <table class="table table-striped" >
                                         <thead>
                                             <tr>
-                                                <th colspan = "4" style="text-align:center">PLN</th>
-                                                <th colspan = "4" style="text-align:center">GENSET</th>
+                                                <th colspan = "4" style="text-align:center" bgcolor="#00BFFF">PLN</th>
+                                                <th colspan = "4" style="text-align:center" bgcolor="#00BFFF">GENSET</th>
                                             </tr>
                                         </thead>
                                         <tbody class="rack-table">
@@ -183,14 +183,14 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th bgcolor="green"></th>
-                                            <th bgcolor="green">Tag Name</th>
-                                            <th bgcolor="green">Description</th>
-                                            <th bgcolor="green">Location</th>
-                                            <th bgcolor="green">R</th>
-                                            <th bgcolor="green">S</th>
-                                            <th bgcolor="green">T</th>
-                                            <th bgcolor="green">AVG/Total</th>
+                                            <th bgcolor="#00BFFF">Electrical</th>
+                                            <th bgcolor="#00BFFF">Tag Name</th>
+                                            <th bgcolor="#00BFFF">Description</th>
+                                            <th bgcolor="#00BFFF">Location</th>
+                                            <th bgcolor="#00BFFF">R</th>
+                                            <th bgcolor="#00BFFF">S</th>
+                                            <th bgcolor="#00BFFF">T</th>
+                                            <th bgcolor="#00BFFF">AVG/Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -227,7 +227,7 @@
                                         </tr>
                                         <tr>
                                             <td>Kwh</td>
-                                            <td colspan="7" bgcolor="yellow" align="center">123456.678</td>
+                                            <td colspan="7" bgcolor="#F5F5DC" align="center">123456.678</td>
                                         </tr>
                                     </tbody>
                                 </table>
