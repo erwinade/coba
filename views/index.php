@@ -30,18 +30,19 @@ if(!isset( $_SESSION["userlogin"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Soendev</title>
-    <link href="../assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" rel="stylesheet">
-    <link href="../assets/node_modules/morrisjs/morris.css" rel="stylesheet">
-    <link href="../assets/node_modules/c3-master/c3.min.css" rel="stylesheet">
-    <link href="../assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/pages/dashboard1.css" rel="stylesheet">
-    <link href="../css/pages/pages.css" rel="stylesheet">
-    <link href="../css/colors/default.css" id="theme" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../assets/node_modules/daterangepicker/daterangepicker.css" />
+    <link href="assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="assets/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <link href="assets/node_modules/c3-master/c3.min.css" rel="stylesheet">
+    <link href="assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pages/dashboard1.css" rel="stylesheet">
+    <link href="css/pages/pages.css" rel="stylesheet">
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/node_modules/daterangepicker/daterangepicker.css" />
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -123,16 +124,16 @@ if(!isset( $_SESSION["userlogin"])){
         </div>
     </div>
     
-    <script src="../assets/node_modules/jquery/jquery.min.js"></script>
-    <script src="../assets/node_modules/bootstrap/js/popper.min.js"></script>
-    <script src="../assets/node_modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/node_modules/ps/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../js/waves.js"></script>
-    <script src="../js/sidebarmenu.js"></script>
-    <script src="../js/custom.min.js"></script>
-    <script src="../assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
-    <script src="../assets/node_modules/daterangepicker/moment.min.js"></script>
-    <script src="../assets/node_modules/daterangepicker/daterangepicker.js"></script>
+    <script src="assets/node_modules/jquery/jquery.min.js"></script>
+    <script src="assets/node_modules/bootstrap/js/popper.min.js"></script>
+    <script src="assets/node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/node_modules/ps/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/waves.js"></script>
+    <script src="js/sidebarmenu.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="assets/node_modules/daterangepicker/moment.min.js"></script>
+    <script src="assets/node_modules/daterangepicker/daterangepicker.js"></script>
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-rnYU0fwyR3qe_qTj5_fGYOQp8IVuldk&callback=initMap"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
@@ -195,7 +196,9 @@ if(!isset( $_SESSION["userlogin"])){
                     });
                 </script>
         <?php
-            }else{
+            }elseif($_GET['page'] == 'reboot'){
+                echo '<script src="reboot/reboot.js"> </script>';
+        }else{
                 echo '<script src="index.js"> </script>';
             }
         }else{
