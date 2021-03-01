@@ -34,12 +34,13 @@ $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sen
         <div class="card">
             <div class="card-body">
                 <label for="">Pilih Sensor</label>
-                <form action="detail.php" id="form-select" method="get">
+                <form action="index.php" id="form-select" method="get">
                 <select name="sensor_id" id="select-sensor" class="form-control">
                     <?php $db_conn->query('SELECT * FROM sensor_utama where group_name = "sensors" order by sens_name')->fetchAll(function($sensor) use ($sensor_id) { ?>
                             <option value="<?php  echo $sensor['id'];  ?>" <?php if($sensor_id == $sensor['id']) { echo "selected"; } ?>><?php  echo $sensor['sens_name'];  ?></option>
                         <?php });?>
                 </select>
+                <input type="hidden" name="page" value="detail">
                 </form>
             </div>
         </div>
