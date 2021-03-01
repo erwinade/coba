@@ -125,7 +125,7 @@ $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sen
                 <?php 
                     $relay = $db_conn->query('SELECT * FROM sensor where sens_type = "relay" order by id')->fetchAll();
                 ?>
-                <form method="post" action="relay.php">
+                <form method="post" action="sensors/relay.php">
 
                 <?php 
                 $no = 1;
