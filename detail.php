@@ -2,6 +2,7 @@
     include 'config/db.php';
     include 'conn.php';
     include 'relay.php';
+    include 'export_excel.php';
 
     $db_conn = new db();
 
@@ -111,8 +112,9 @@
 			<div class="raw">
 				<div class="card">
                 <div class="card-header bg-danger mb-3" >
-                        <b class="text-white"><i class="fas fa-wrench"></i> Last Update</strong> </b>
+                        <b class="text-white"><i class="fas fa-wrench"></i> Setting</strong> </b>
                     </div>
+                    <form action="" method="post">
 					<div class="row" style="padding-left:5px;">
 						<div class="col-lg-6">
 							<div class="form-group" style="padding-right:5px;">
@@ -125,9 +127,10 @@
 							</div>
 						</div>
 						<div class="col-lg-6">
-							<button id="excel" type="button" class="btn btn-sm btn-primary"><span class="fas fa-save"></span>  Export to EXCEL</button>
+							<button id="excel" type="submit" class="btn btn-sm btn-primary"><span class="fas fa-save"></span>  Export to EXCEL</button>
 						</div>
 					</div>
+                    </form>
 					<hr>
                     <?php 
                         $relay = $db_conn->query('SELECT * FROM sensor where sens_type = "relay" order by id')->fetchAll();

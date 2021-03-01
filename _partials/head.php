@@ -16,7 +16,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'];
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Soendev</title>
     <!-- Bootstrap Core CSS -->
-    <link href="assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" rel="stylesheet">
     <!-- This page CSS -->
     <!-- chartist CSS -->
