@@ -16,7 +16,7 @@ if(!isset( $_SESSION["userlogin"])){
         [ 'name'=>'Panel Info','url' => '?page=panel','icon'=>'icon-Double-Circle'],
         [ 'name'=>'Alarm Logs','url' => '?page=alarm','icon'=>'icon-Split-Vertical'],
         [ 'name'=>'Pengaturan','url' => '?page=pengaturan','icon'=>'icon-Prater'],
-        [ 'name'=>'Reboot','url' => 'reboot.php','icon'=>'fas fa-unlock'],
+        [ 'name'=>'Reboot','url' => '?page=reboot','icon'=>'fas fa-unlock'],
         [ 'name'=>'Logout','url' => 'logout.php','icon'=>'fas fa-user'],
 
     ];
@@ -99,6 +99,14 @@ if(!isset( $_SESSION["userlogin"])){
                 {
                     if($_GET['page'] == 'detail'){
                         include 'sensors/detail.php';
+                    }elseif($_GET['page'] == 'panel'){
+                        include 'panels/index.php';
+                    }elseif($_GET['page'] == 'alarm'){
+                        include 'alarms/index.php';
+                    }elseif($_GET['page'] == 'pengaturan'){
+                        include 'pengaturan/index.php';
+                    }elseif($_GET['page'] == 'reboot'){
+                        include 'reboot/index.php';
                     }else{
                         include 'sensors/index.php';
                     }
@@ -122,14 +130,71 @@ if(!isset( $_SESSION["userlogin"])){
     <script src="../js/waves.js"></script>
     <script src="../js/sidebarmenu.js"></script>
     <script src="../js/custom.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-rnYU0fwyR3qe_qTj5_fGYOQp8IVuldk&callback=initMap"></script>
+    <script src="../assets/node_modules/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="../assets/node_modules/daterangepicker/moment.min.js"></script>
+    <script src="../assets/node_modules/daterangepicker/daterangepicker.js"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-rnYU0fwyR3qe_qTj5_fGYOQp8IVuldk&callback=initMap"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
 
     <?php 
         if(isset($_GET['page']))
         {
             if($_GET['page'] == 'detail'){
-                include 'sensors/detail.php';
+        ?>
+                <script>
+
+                    <?php foreach($data_log as $key =>  $dt) { ?>
+
+                    var ctx = document.getElementById('tempChart-<?php echo $key ?>');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: [<?php foreach ($dt as $label) { echo '"' . $label['created_at'] . '",';}?>],
+                            datasets: [{
+                                label: '<?php echo $dt[0]['sens_name']; ?>',
+                                data: [<?php foreach ($dt as $data) { echo $data['sens_value'] . ',';}?>],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+
+                    <?php } ?>
+
+                    $('input[name="dates"]').daterangepicker();
+
+                    $('#select-sensor').change(function ()
+                    {
+                        $('#form-select').submit();
+                    });
+                </script>
+        <?php
             }else{
                 echo '<script src="index.js"> </script>';
             }

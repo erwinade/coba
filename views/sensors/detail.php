@@ -123,32 +123,6 @@ $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sen
                 <hr>
                 <?php 
                     $relay = $db_conn->query('SELECT * FROM sensor where sens_type = "relay" order by id')->fetchAll();
-
-                    // $sql	= 'select * from sensor where id="23"';
-                    // $query	= mysqli_query($conn,$sql);
-                    // while($row = mysqli_fetch_array($query))
-                    // {
-                    //     $sens_name1 = $row['sens_name'];
-                    // }
-                    // $sql	= 'select * from sensor where id="24"';
-                    // $query	= mysqli_query($conn,$sql);
-                    // while($row = mysqli_fetch_array($query))
-                    // {
-                    //     $sens_name2 = $row['sens_name'];
-                    // }
-                    // $sql	= 'select * from sensor where id="25"';
-                    // $query	= mysqli_query($conn,$sql);
-                    // while($row = mysqli_fetch_array($query))
-                    // {
-                    //     $sens_name3 = $row['sens_name'];
-                    // }
-                    // $sql	= 'select * from sensor where id="26"';
-                    // $query	= mysqli_query($conn,$sql);
-                    // while($row = mysqli_fetch_array($query))
-                    // {
-                    //     $sens_name4 = $row['sens_name'];
-                    // }
-
                 ?>
                 <form method="post" action="relay.php">
 
@@ -163,23 +137,28 @@ $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sen
                 </div>
                 <br>
                 <?php $no++; } ?>
-                <!-- <div class="col-12 text-center">
-                        <button class="btn btn-sm btn-success" name="relay2on"><?php //echo $sens_name2;?> ON</button>
-                        <button class="btn btn-sm btn-danger" name="relay2off"><?php //echo $sens_name2;?> OFF</button>
-                    
-                </div>
-                <br>
-                <div class="col-12 text-center">
-                        <button class="btn btn-sm btn-success" name="relay3on"><?php //echo $sens_name3;?> ON</button>
-                        <button class="btn btn-sm btn-danger" name="relay3off"><?php //echo $sens_name3;?> OFF</button>
-                    
-                </div>
-                <br>
-                <div class="col-12 text-center">
-                        <button class="btn btn-sm btn-success" name="relay4on"><?php// echo $sens_name4;?> ON</button>
-                        <button class="btn btn-sm btn-danger" name="relay4off"><?php //echo $sens_name4;?> OFF</button>
-                </div> -->
                 </form>
             </div>
         </div>
     </div>
+
+<?php
+
+    $data_log = [];
+    foreach ($sensors as $sen) {
+        $id_sensor = $sen['id'];
+
+        $data_log[] = $db_conn->query('SELECT slog.id, slog.sens_value, slog.created_at, sensor.sens_name  FROM 
+        (
+            SELECT * FROM sensor_log where id_sens = '.$id_sensor.' ORDER BY id DESC LIMIT 25
+        ) slog inner join sensor on sensor.id = slog.id_sens where slog.id_sens = '.$id_sensor.' order by slog.id'
+        )->fetchAll();
+    }
+
+
+    $tempLabel = ["1 Jan", "2 Jan","3 Jan","4 Jan", "5 Jan","6 Jan","7 Jan", "8 Jan","9 Jan","10 Jan", "11 Jan","12 Jan","13 Jan", "14 Jan","15 Jan"];
+    $tempData = [60, 70,90, 89,88,87,86,85,84,83,82,81,80,79,78];
+
+    $humLabel = ["1 Jan", "2 Jan","3 Jan","4 Jan", "5 Jan","6 Jan","7 Jan", "8 Jan","9 Jan","10 Jan", "11 Jan","12 Jan","13 Jan", "14 Jan","15 Jan"];
+    $humData = [30, 33, 35,36,37,38,39,40,41,42,44,46,67,68,45];
+?>
