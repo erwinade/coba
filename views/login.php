@@ -60,7 +60,7 @@
     <form method="post">
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="username" value="<?php echo $_SESSION['username']; ?>" required>
       <?php if($_SESSION["erroruser"]){ ?> <label for="" class="text-danger">username tidak di temukan   </label><?php }  ?>
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
       <?php if($_SESSION["errorpass"]){ ?> <label for="" class="text-danger">password salah   </label> <br><br> <?php }  ?>
       <input type="submit" class="fadeIn fourth" name="submit" value="Log In">
     </form>
