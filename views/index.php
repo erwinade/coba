@@ -1,10 +1,9 @@
 <?php session_start(); 
 
-if(!isset( $_SESSION["userlogin"])){
-    header('Location: /views/login.php');
-}
-?>
-<?php 
+    if(!isset( $_SESSION["userlogin"])){
+        header('Location: /views/login.php');
+    }
+
     include '../conn.php' ;
     include '../config/db.php';
     $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";  
@@ -18,7 +17,6 @@ if(!isset( $_SESSION["userlogin"])){
         [ 'name'=>'Pengaturan','url' => '?page=pengaturan','icon'=>'icon-Prater'],
         [ 'name'=>'Reboot','url' => '?page=reboot','icon'=>'fas fa-unlock'],
         [ 'name'=>'Logout','url' => 'logout.php','icon'=>'fas fa-user'],
-
     ];
 
 ?>
@@ -93,9 +91,7 @@ if(!isset( $_SESSION["userlogin"])){
         </aside>
 
         <div class="page-wrapper">
-
             <?php 
-
                 if(isset($_GET['page']))
                 {
                     if($_GET['page'] == 'detail'){
@@ -115,7 +111,6 @@ if(!isset( $_SESSION["userlogin"])){
                     include 'sensors/index.php';
                 }
 
-                
             ?>
 
             <footer class="footer">
@@ -138,7 +133,7 @@ if(!isset( $_SESSION["userlogin"])){
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
-
+<!-- include javascript sesuai halaman  -->
     <?php 
         if(isset($_GET['page']))
         {
