@@ -104,7 +104,7 @@ $sensors = $db_conn->query('SELECT * FROM sensor where sensor_utama_id = "'.$sen
             <div class="card-header bg-danger mb-3" >
                     <b class="text-white"><i class="fas fa-wrench"></i> Setting</strong> </b>
                 </div>
-                <form action="" method="post">
+                <form action="/views/excel/export_excel.php" method="post">
                 <div class="row" style="padding-left:5px;">
                     <div class="col-lg-6">
                         <div class="form-group" style="padding-right:5px;">
